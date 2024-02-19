@@ -1,13 +1,13 @@
 from django.contrib import admin
-from .models import Product, SubCategory, Category
-from .models import Product, SubCategory, Category, Order
+from .models import Product, SubCategory, Category, Order, IconAnimal
 
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = [
-        'id',
         "name",
+        "short_description",
+        # "icon_animal",
         "compound",
         'description',
         'applying',
@@ -16,6 +16,7 @@ class ProductAdmin(admin.ModelAdmin):
         'storage_date',
         'storage_conditions',
         'sub_category',
+        'id',
     ]
 
 
@@ -45,3 +46,9 @@ class OrderAdmin(admin.ModelAdmin):
         'phone',
         'email',
     ]
+
+
+@admin.register(IconAnimal)
+class IconAnimalAdmin(admin.ModelAdmin):
+    list_display = ['name', 'id', 'icon']
+    ordering = ['name']

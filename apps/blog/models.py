@@ -10,13 +10,14 @@ class Events(models.Model):
     created_at = models.DateTimeField(verbose_name='Создано', auto_now_add=True)
     image = models.CharField(verbose_name='Картинка', max_length=150)
     slug = models.SlugField()
+    objects = models.Manager()
 
     class Meta:
         verbose_name = 'Событиe'
         verbose_name_plural = 'События'
 
     def __str__(self):
-        return self.title
+        return f"{self.title}"
 
 
 class Public(models.Model):
@@ -25,38 +26,45 @@ class Public(models.Model):
     created_at = models.DateTimeField(verbose_name='Создано', auto_now_add=True)
     image = models.CharField(verbose_name='Картинка', max_length=200)
     slug = models.SlugField()
+    objects = models.Manager()
 
     class Meta:
         verbose_name = 'Публикация'
         verbose_name_plural = 'Публикации'
 
     def __str__(self):
-        return self.title
+        return f"{self.title}"
 
 
-class New_Products(models.Model):
+class NewProducts(models.Model):
     product_name = models.CharField(verbose_name='Имя продукта', max_length=150)
     slug = models.SlugField()
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True, verbose_name = 'Новинка')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True, verbose_name='Новинка')
+    objects = models.Manager()
 
     class Meta:
         verbose_name = 'Новинка'
         verbose_name_plural = 'Новинки'
 
     def __str__(self):
-        return self.product_name
+        return f"{self.product_name}"
 
 
-class Enxibitation_Calendar(models.Model):
+class ExhibitionCalendar(models.Model):
     name_exhibition = models.TextField(verbose_name='Календарь выставок')
     period = models.CharField(verbose_name='Период', max_length=100)
     data_of_participation = models.CharField(verbose_name='Дата участия', max_length=100)
     location = models.CharField(verbose_name='Место проведения выставки', max_length=100)
     slug = models.SlugField()
+    objects = models.Manager()
 
     class Meta:
         verbose_name = 'Календарь выставки'
         verbose_name_plural = 'Календарь выставок'
 
     def __str__(self):
-        return self.name_exhibition
+        return f"{self.name_exhibition}"
+
+
+class ManualVideo(models.Model):
+    name = models.CharField(max_length=150, verbose_name='Название видео')

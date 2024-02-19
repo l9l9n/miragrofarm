@@ -1,8 +1,8 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import BlogEvents, PublicBlogView
+from .views import BlogEventsListAPIView, PublicBlogListAPIView
 
 urlpatterns = [
-    path("api/v1/blog_list/", BlogEvents.as_view()),
-    path("api/v1/blog_pub/", PublicBlogView.as_view()),
+    path("blog-event-list/", BlogEventsListAPIView.as_view()),
+    path("blog_pub/", PublicBlogListAPIView.as_view()),
 ]

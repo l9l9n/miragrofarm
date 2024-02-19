@@ -2,7 +2,8 @@
 *.pot
 *.pyc
 __pycache__
-db.sqlite3
+__pycache__/
+MAF/db.sqlite3
 media
 
 # Backup files #
@@ -10,31 +11,9 @@ media
 
 # If you are using PyCharm #
 # User-specific stuff
-.idea/**/workspace.xml
-.idea/**/tasks.xml
-.idea/**/usage.statistics.xml
-.idea/**/dictionaries
-.idea/**/shelf
-
-# AWS User-specific
-.idea/**/aws.xml
-
-# Generated files
-.idea/**/contentModel.xml
-
-# Sensitive or high-churn files
-.idea/**/dataSources/
-.idea/**/dataSources.ids
-.idea/**/dataSources.local.xml
-.idea/**/sqlDataSources.xml
-.idea/**/dynamic.xml
-.idea/**/uiDesigner.xml
-.idea/**/dbnavigator.xml
-
-# Gradle
-.idea/**/gradle.xml
-.idea/**/libraries
-
+../.idea
+.idea/vcs.xml
+.idea/misc.xml
 # File-based project format
 *.iws
 
@@ -98,7 +77,7 @@ celerybeat-schedule.*
 
 # Environments
 .env
-.venv
+Django-Beta-Project/venv
 env/
 venv/
 ENV/
@@ -107,31 +86,3 @@ venv.bak/
 
 # mkdocs documentation
 /site
-
-# mypy
-.mypy_cache/
-
-# Sublime Text #
-*.tmlanguage.cache
-*.tmPreferences.cache
-*.stTheme.cache
-*.sublime-workspace
-*.sublime-project
-
-# sftp configuration file
-sftp-config.json
-
-# Package control specific files Package
-Control.last-run
-Control.ca-list
-Control.ca-bundle
-Control.system-ca-bundle
-GitHub.sublime-settings
-
-# Visual Studio Code #
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-.history

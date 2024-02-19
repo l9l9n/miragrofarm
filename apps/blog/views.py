@@ -1,19 +1,17 @@
 from django.shortcuts import render
-from rest_framework import generics, mixins, viewsets
-from rest_framework.generics import GenericAPIView
-from rest_framework.viewsets import GenericViewSet
+from rest_framework import generics
 
 from .models import Events, Public
 from .serializer import EventSerializer, PublicSerializer
 
 
-class BlogEventsView(mixins.ListModelMixin, GenericViewSet):
+class BlogEventsListAPIView(generics.ListAPIView):
 
     queryset = Events.objects.all()
     serializer_class = EventSerializer
 
 
-class PublicBlogView(mixins.ListModelMixin, GenericViewSet):
+class PublicBlogListAPIView(generics.ListAPIView):
 
     queryset = Public.objects.all()
     serializer_class = PublicSerializer
