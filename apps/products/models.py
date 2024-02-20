@@ -29,17 +29,7 @@ class SubCategory(models.Model):
 
 
 class IconAnimal(models.Model):
-    ANIMAL_CHOICES = (
-        ('dog', 'Собака'),
-        ('cat', 'Кошка'),
-        ('horse', 'Лошадь'),
-        ('cow', 'Корова'),
-        ('sheep', 'Овца'),
-        ('hen', 'Курица'),
-        ('pig', 'Свин'),
-        ('fish', 'Рыба'),
-    )
-    name = models.CharField(max_length=60, verbose_name='Тип животного', choices=ANIMAL_CHOICES)
+    name = models.CharField(max_length=60, verbose_name='Тип животного')
     icon = models.ImageField(upload_to='media/icons/', verbose_name='Иконка')
 
     class Meta:
@@ -47,7 +37,7 @@ class IconAnimal(models.Model):
         verbose_name_plural = 'Иконки животного'
 
     def __str__(self):
-        return self.get_name_display()
+        return f"{self.name}"
 
 
 class Product(models.Model):
@@ -63,6 +53,7 @@ class Product(models.Model):
     storage_conditions = models.TextField(verbose_name='Срок хранения')
     sub_category = models.ForeignKey(SubCategory, on_delete=models.SET_NULL, null=True,
                                      verbose_name='Какой подкатегории относится?')
+    is_new_product = models.BooleanField(verbose_name='Является ли продукт новинкой')
     objects = models.Manager()
 
     class Meta:
