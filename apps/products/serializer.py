@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Product, Order
+from .models import Product, Order, Subscription
 
 
 class ProductListSerializer(serializers.ModelSerializer):
@@ -21,3 +21,13 @@ class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = ('id', 'name', 'phone', 'email', 'date')
+
+
+class SubscriptionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Subscription
+        fields = ['email']
+
+    def validate_email(self, value):
+        return value
+

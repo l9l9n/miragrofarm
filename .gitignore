@@ -5,10 +5,10 @@ __pycache__
 __pycache__/
 MAF/db.sqlite3
 media
-
+migrations/
 # Backup files #
 *.bak
-
+venv
 # If you are using PyCharm #
 # User-specific stuff
 ../.idea
@@ -76,7 +76,7 @@ celerybeat-schedule.*
 *.sage.py
 
 # Environments
-.env
+#.env
 Django-Beta-Project/venv
 env/
 venv/

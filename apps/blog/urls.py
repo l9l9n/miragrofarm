@@ -3,6 +3,6 @@ from django.urls import path, include
 from .views import BlogEventsListAPIView, PublicBlogListAPIView
 
 urlpatterns = [
-    path("blog-event-list/", BlogEventsListAPIView.as_view()),
-    path("blog_pub/", PublicBlogListAPIView.as_view()),
+    path("event-list/", BlogEventsListAPIView.as_view()),
+    path("publish/", PublicBlogListAPIView.as_view()),
 ]
