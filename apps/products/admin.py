@@ -7,7 +7,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = [
         "name",
         "short_description",
-        # "icon_animal",
+        "icon_animal",
         "compound",
         'description',
         'applying',
@@ -18,6 +18,11 @@ class ProductAdmin(admin.ModelAdmin):
         'sub_category',
         'id',
     ]
+
+    def icon_animal(self, obj):
+        return ", ".join([icon.name for icon in obj.icons.all()])
+
+    icon_animal.short_description = "Иконка"
 
 
 @admin.register(SubCategory)

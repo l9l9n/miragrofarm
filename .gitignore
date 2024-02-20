@@ -78,7 +78,7 @@ celerybeat-schedule.*
 # Environments
 .env
 Django-Beta-Project/venv
-env/
+#env/
 venv/
 ENV/
 env.bak/
