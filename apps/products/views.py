@@ -1,9 +1,9 @@
 from rest_framework.response import Response
 
-from .models import Product, Order
+from .models import Product, Order, Subscription
 from rest_framework import generics, viewsets
 from rest_framework import mixins
-from .serializer import ProductDetailSerializer, OrderSerializer, ProductListSerializer
+from .serializer import ProductDetailSerializer, OrderSerializer, ProductListSerializer, SubscriptionSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
 
 
@@ -24,3 +24,8 @@ class ProductDetailAPIView(generics.RetrieveAPIView):
 class OrderViewSet(generics.CreateAPIView):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
+
+
+class SubscribeAPIView(generics.CreateAPIView):
+    queryset = Subscription.objects.all()
+    serializer_class = SubscriptionSerializer

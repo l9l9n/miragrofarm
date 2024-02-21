@@ -21,12 +21,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from apps.products import swagger
-"""Нада добавить index (начальную страницу)"""
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('products/', include('apps.products.urls')),
     path('blog/', include('apps.blog.urls')),
-    path('swagger/', swagger.schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('docs/', swagger.schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]
 
 if settings.DEBUG:

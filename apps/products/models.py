@@ -1,4 +1,5 @@
 from django.db import models
+from multiselectfield import MultiSelectField
 
 
 class Category(models.Model):
@@ -79,3 +80,10 @@ class Order(models.Model):
     def __str__(self):
         return f"Имя {self.name}, Номер телефона {self.phone}, email {self.email}"
 
+
+class Subscription(models.Model):
+    email = models.EmailField(unique=True, verbose_name="Подписка на рассылку")
+    objects = models.Manager()
+
+    def __str__(self):
+        return f"{self.email}"

@@ -21,7 +21,6 @@ class ProductAdmin(admin.ModelAdmin):
 
     def icon_animal(self, obj):
         return ", ".join([icon.name for icon in obj.icons.all()])
-
     icon_animal.short_description = "Иконка"
 
 
