@@ -30,7 +30,8 @@ class SubCategory(models.Model):
 
 class IconAnimal(models.Model):
     name = models.CharField(max_length=60, verbose_name='Тип животного')
-    icon = models.ImageField(upload_to='media/icons/', verbose_name='Иконка')
+    icon = models.ImageField(upload_to='icons/', verbose_name='Иконка')
+    objects = models.Manager()
 
     class Meta:
         verbose_name = 'Иконка животного'
