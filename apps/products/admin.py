@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, SubCategory, Category, Order, IconAnimal
+from .models import Product, SubCategory, Category, Order, IconAnimal, Subscription
 
 
 @admin.register(Product)
@@ -56,3 +56,8 @@ class OrderAdmin(admin.ModelAdmin):
 class IconAnimalAdmin(admin.ModelAdmin):
     list_display = ['name', 'id', 'icon']
     ordering = ['name']
+
+
+@admin.register(Subscription)
+class SubscribeAdmin(admin.ModelAdmin):
+    list_display = ['email']

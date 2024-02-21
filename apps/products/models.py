@@ -82,8 +82,12 @@ class Order(models.Model):
 
 
 class Subscription(models.Model):
-    email = models.EmailField(unique=True, verbose_name="Подписка на рассылку")
+    email = models.EmailField(unique=True, verbose_name="Подписчики")
     objects = models.Manager()
+
+    class Meta:
+        verbose_name = 'Подписчик на рассылку'
+        verbose_name_plural = 'Подписчики на рассылки'
 
     def __str__(self):
         return f"{self.email}"
