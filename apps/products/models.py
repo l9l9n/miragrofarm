@@ -43,6 +43,7 @@ class IconAnimal(models.Model):
 
 class Product(models.Model):
     name = models.CharField(verbose_name='Название продукта', max_length=255)
+    img_product = models.ImageField(upload_to='img_product/', verbose_name='Картинка лекарства')
     short_description = models.CharField(max_length=95, verbose_name='Короткое описание')
     icon_animal = models.ManyToManyField(IconAnimal, verbose_name='Иконка животного', related_name='products')
     description = models.TextField(verbose_name='Описание')

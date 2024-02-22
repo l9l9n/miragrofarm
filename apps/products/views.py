@@ -1,10 +1,10 @@
-from rest_framework.response import Response
-
 from .models import Product, Order, Subscription
 from rest_framework import generics, viewsets
 from rest_framework import mixins
 from .serializer import ProductDetailSerializer, OrderSerializer, ProductListSerializer, SubscriptionSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
+
+from .signals import send_subscription_email
 
 
 class ProductListAPIView(generics.ListAPIView):
@@ -29,3 +29,10 @@ class OrderViewSet(generics.CreateAPIView):
 class SubscribeAPIView(generics.CreateAPIView):
     queryset = Subscription.objects.all()
     serializer_class = SubscriptionSerializer
+
+    def perform_create(self, serializer):
+        instance = serializer.save()
+        send_subscription_email(instance.email)
+
+
+
