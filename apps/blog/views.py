@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from rest_framework import generics
 
-from .models import Events, Public
-from .serializer import EventSerializer, PublicSerializer
+from .models import Events, Public, QuestionsAndAnswers
+from .serializer import EventSerializer, PublicSerializer, QuestionsAndAnswersSerializer
 
 
 class BlogEventsListAPIView(generics.ListAPIView):
@@ -16,3 +16,8 @@ class PublicBlogListAPIView(generics.ListAPIView):
     queryset = Public.objects.all()
     serializer_class = PublicSerializer
 
+
+class QuestionsAndAnswersListAPIView(generics.ListAPIView):
+
+    queryset = QuestionsAndAnswers.objects.all()
+    serializer_class = QuestionsAndAnswersSerializer

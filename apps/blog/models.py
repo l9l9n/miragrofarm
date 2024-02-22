@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 
-from .. products.models import Product
+from ..products.models import Product
 
 
 class Events(models.Model):
@@ -68,3 +68,26 @@ class ExhibitionCalendar(models.Model):
 
 class ManualVideo(models.Model):
     name = models.CharField(max_length=150, verbose_name='Название видео')
+    description = models.TextField(verbose_name='Описание видео')
+    created = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления')
+
+
+class QuestionsAndAnswers(models.Model):
+    name = models.CharField(max_length=150, verbose_name='Имя', null=True)
+    email = models.EmailField(verbose_name='Почта', null=True)
+    phone = models.CharField(max_length=120, verbose_name='Телефон')
+    questions = models.TextField(verbose_name='Вопросы и ответы', null=True)
+    date = models.DateTimeField('Дата вопроса', auto_now_add=True)
+    objects = models.Manager()
+
+    @staticmethod
+    def search(query):
+        return QuestionsAndAnswers.objects.filter(questions__icontains=query)
+
+    class Meta:
+        verbose_name = 'Вопрос и ответ'
+        verbose_name_plural = 'Вопросы и ответы'
+        ordering = ['-date']
+
+    def __str__(self):
+        return f"Имя {self.name}, Номер телефона {self.phone}, email {self.email}"
