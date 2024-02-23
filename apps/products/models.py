@@ -51,7 +51,7 @@ class Product(models.Model):
     applying = models.TextField(verbose_name='Применение')
     waiting_time = models.TextField(verbose_name='Период ожидания')
     release_form = models.TextField(verbose_name='Форма выпуска')
-    storage_date = models.TextField(verbose_name='Состав')
+    storage_date = models.TextField(verbose_name='Условия хранения')
     storage_conditions = models.TextField(verbose_name='Срок хранения')
     sub_category = models.ForeignKey(SubCategory, on_delete=models.SET_NULL, null=True,
                                      verbose_name='Какой подкатегории относится?')

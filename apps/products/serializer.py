@@ -1,8 +1,16 @@
 from rest_framework import serializers
-from .models import Product, Order, Subscription
+from .models import Product, Order, Subscription, IconAnimal
+
+
+class IconAnimalSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = IconAnimal
+        fields = ['id', 'name', 'icon']
 
 
 class ProductListSerializer(serializers.ModelSerializer):
+    icon_animal = IconAnimalSerializer(many=True, read_only=True)
 
     class Meta:
         model = Product
