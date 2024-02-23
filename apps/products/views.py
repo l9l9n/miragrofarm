@@ -35,4 +35,7 @@ class SubscribeAPIView(generics.CreateAPIView):
         send_subscription_email(instance.email)
 
 
-
+class NewProductListAPIView(generics.ListAPIView):
+    queryset = Product.objects.filter(is_new_product=True)
+    serializer_class = ProductListSerializer
+    permission_classes = [AllowAny]
