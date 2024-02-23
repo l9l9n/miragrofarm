@@ -55,7 +55,7 @@ class Product(models.Model):
     storage_conditions = models.TextField(verbose_name='Срок хранения')
     sub_category = models.ForeignKey(SubCategory, on_delete=models.SET_NULL, null=True,
                                      verbose_name='Какой подкатегории относится?')
-    is_new_product = models.BooleanField(verbose_name='Является ли продукт новинкой')
+    is_new_product = models.BooleanField(verbose_name='Является ли продукт новинкой', default=False)
     objects = models.Manager()
 
     class Meta:
