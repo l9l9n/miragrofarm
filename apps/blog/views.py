@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework import generics
 
 from .models import Events, Public, QuestionsAndAnswers
-from .serializer import EventSerializer, PublicSerializer, QuestionsAndAnswersSerializer
+from .serializers import EventSerializer, PublicSerializer, QuestionsAndAnswersSerializer
 
 
 class BlogEventsListAPIView(generics.ListAPIView):

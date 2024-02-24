@@ -1,7 +1,7 @@
 from .models import Product, Order, Subscription, IconAnimal
 from rest_framework import generics, viewsets
 from rest_framework import mixins
-from .serializer import ProductDetailSerializer, OrderSerializer, ProductListSerializer, SubscriptionSerializer
+from .serializers import ProductDetailSerializer, OrderSerializer, ProductListSerializer, SubscriptionSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
 
 from .signals import send_subscription_email
