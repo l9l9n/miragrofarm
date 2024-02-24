@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Product, Order, Subscription, IconAnimal
+from .models import Product, Order, Subscription, IconAnimal, FilePDF
 
 
 class IconAnimalSerializer(serializers.ModelSerializer):
@@ -7,6 +7,13 @@ class IconAnimalSerializer(serializers.ModelSerializer):
     class Meta:
         model = IconAnimal
         fields = ['id', 'name', 'icon']
+
+
+class FilePDFSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = FilePDF
+        fields = ['name', 'pdf_file']
 
 
 class ProductListSerializer(serializers.ModelSerializer):
@@ -18,6 +25,8 @@ class ProductListSerializer(serializers.ModelSerializer):
 
 
 class ProductDetailSerializer(serializers.ModelSerializer):
+    icon_animal = IconAnimalSerializer(many=True, read_only=True)
+    pdf_file = FilePDFSerializer(many=True, read_only=True)
     """Сериализатор для продуктов"""
     class Meta:
         model = Product
