@@ -21,7 +21,22 @@ class ProductDetailSerializer(serializers.ModelSerializer):
     """Сериализатор для продуктов"""
     class Meta:
         model = Product
-        fields = '__all__'
+        fields = (
+            'name',
+            'img_product',
+            'short_description',
+            'icon_animal',
+            'description',
+            'compound',
+            'applying',
+            'waiting_time',
+            'release_form',
+            'storage_date',
+            'storage_conditions',
+            'sub_category',
+            'is_new_product',
+            'pdf_file',
+        )
 
 
 class OrderSerializer(serializers.ModelSerializer):

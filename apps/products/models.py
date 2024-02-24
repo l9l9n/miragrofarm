@@ -41,6 +41,19 @@ class IconAnimal(models.Model):
         return f"{self.name}"
 
 
+class FilePDF(models.Model):
+    name = models.CharField(max_length=100, verbose_name='Название PDF файла')
+    pdf_file = models.FileField(upload_to='pdfs/', null=True, blank=True)
+    objects = models.Manager()
+
+    class Meta:
+        verbose_name = 'PDF файл'
+        verbose_name_plural = 'PDF файлы'
+
+    def __str__(self):
+        return f"{self.name}"
+
+
 class Product(models.Model):
     name = models.CharField(verbose_name='Название продукта', max_length=255)
     img_product = models.ImageField(upload_to='img_product/', verbose_name='Картинка лекарства')
@@ -56,6 +69,7 @@ class Product(models.Model):
     sub_category = models.ForeignKey(SubCategory, on_delete=models.SET_NULL, null=True,
                                      verbose_name='Какой подкатегории относится?')
     is_new_product = models.BooleanField(verbose_name='Является ли продукт новинкой', default=False)
+    pdf_file = models.ManyToManyField(FilePDF, verbose_name='PDF файлы', related_name='products')
     objects = models.Manager()
 
     class Meta:
