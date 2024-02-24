@@ -7,9 +7,9 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = [
         "name",
         "short_description",
-        "icon_animal",
+        "get_type_animals",
         "compound",
-        'description',
+        'get_truncated_description',
         'applying',
         'waiting_time',
         'release_form',
@@ -19,9 +19,13 @@ class ProductAdmin(admin.ModelAdmin):
         'id',
     ]
 
-    def icon_animal(self, obj):
-        return ", ".join([icon.name for icon in obj.icons.all()])
-    icon_animal.short_description = "Иконка"
+    def get_type_animals(self, obj):
+        return ", ".join([animal.name for animal in obj.icon_animal.all()])
+    get_type_animals.short_description = "Типы животных"
+
+    def get_truncated_description(self, obj):
+        return obj.description[:50] + '...' if obj.description and len(obj.description) > 30 else obj.description
+    get_truncated_description.short_description = "Описание"
 
 
 @admin.register(SubCategory)
