@@ -1,5 +1,7 @@
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.filters import OrderingFilter
 from rest_framework.response import Response
-
+from .filters import ProductFilter
 from .models import Product, Order, Subscription
 from rest_framework import generics, viewsets
 from rest_framework import mixins
@@ -11,7 +13,9 @@ class ProductListAPIView(generics.ListAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductListSerializer
     permission_classes = [AllowAny]
-    # filter_backends = [filters.SearchFilter]
+    filter_backends = (DjangoFilterBackend, OrderingFilter)
+    filterset_class = ProductFilter
+    ordering_fields = ('name',)
     # search_fields = ['name',]
 
 
