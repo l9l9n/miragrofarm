@@ -69,6 +69,8 @@ class ExhibitionCalendar(models.Model):
 class ManualVideo(models.Model):
     name = models.CharField(max_length=150, verbose_name='Название видео')
     description = models.TextField(verbose_name='Описание видео')
+    img_preview = models.ImageField(upload_to='img_preview_video/')
+    link = models.CharField(max_length=200)
     created = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления')
 
 

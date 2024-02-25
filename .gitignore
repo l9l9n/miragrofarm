@@ -12,6 +12,7 @@ venv
 # If you are using PyCharm #
 # User-specific stuff
 ../.idea
+.idea
 .idea/vcs.xml
 .idea/misc.xml
 # File-based project format

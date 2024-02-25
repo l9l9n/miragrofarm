@@ -2,9 +2,12 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils import timezone
 from .models import Order
-from config.settings import TELEGRAM_BOT_TOKEN  # Подставьте вашу логику для получения токена
-import requests
 
+import requests
+from django.core.mail import send_mail
+
+from config.settings import TELEGRAM_BOT_TOKEN
+from django.conf import settings
 
 @receiver(post_save, sender=Order)
 def send_telegram_notification(sender, instance, **kwargs):
@@ -29,3 +32,11 @@ def send_telegram_notification(sender, instance, **kwargs):
         except Exception as e:
             # Обработка ошибки отправки в Telegram
             print(f"Ошибка отправки сообщения в Telegram: {e}")
+
+
+def send_subscription_email(email):
+    subject = 'Подписка на рассылку'
+    message = 'Вы успешно подписались на рассылку miragrofarm.'
+    email_from = settings.EMAIL_HOST_USER
+    recipient_list = [email]
+    send_mail(subject, message, email_from, recipient_list)
