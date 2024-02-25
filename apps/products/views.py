@@ -1,4 +1,8 @@
-from .models import Product, Order, Subscription, IconAnimal
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.filters import OrderingFilter
+from rest_framework.response import Response
+from .filters import ProductFilter
+from .models import Product, Order, Subscription
 from rest_framework import generics, viewsets
 from rest_framework import mixins
 from .serializers import ProductDetailSerializer, OrderSerializer, ProductListSerializer, SubscriptionSerializer
@@ -11,7 +15,9 @@ from django.http import HttpResponse
 class ProductListAPIView(generics.ListAPIView):
     serializer_class = ProductListSerializer
     permission_classes = [AllowAny]
-    # filter_backends = [filters.SearchFilter]
+    filter_backends = (DjangoFilterBackend, OrderingFilter)
+    filterset_class = ProductFilter
+    ordering_fields = ('name',)
     # search_fields = ['name',]
 
     def get_queryset(self):
