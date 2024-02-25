@@ -14,11 +14,6 @@ class PublicSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class NewProductSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = NewProducts
-        fields = '__all__'
-
 class QuestionsAndAnswersSerializer(serializers.ModelSerializer):
     class Meta:
         model = QuestionsAndAnswers
