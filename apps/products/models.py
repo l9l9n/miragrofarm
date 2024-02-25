@@ -55,21 +55,13 @@ class FilePDF(models.Model):
 
 
 class Product(models.Model):
-    APPLY_CHOICES = (
-        ('fish', 'рыбы'),
-        ('bird', 'птицы'),
-        ('cattle', 'крупный рогатый скот'),
-        ('small cattle', 'мелкий рогатый скот'),
-        ('pig', 'свиньи'),
-        ('horse', 'лошади'),
-    )
     name = models.CharField(verbose_name='Название продукта', max_length=255)
     img_product = models.ImageField(upload_to='img_product/', verbose_name='Картинка лекарства')
     short_description = models.CharField(max_length=95, verbose_name='Короткое описание')
     icon_animal = models.ManyToManyField(IconAnimal, verbose_name='Иконка животного', related_name='products')
     description = models.TextField(verbose_name='Описание')
     compound = models.TextField(verbose_name='Состав')
-    applying = models.CharField(verbose_name='Применение', choices=APPLY_CHOICES, max_length=50)
+    applying = models.TextField(verbose_name='Применение', max_length=50)
     waiting_time = models.TextField(verbose_name='Период ожидания')
     release_form = models.TextField(verbose_name='Форма выпуска')
     storage_date = models.TextField(verbose_name='Условия хранения')
