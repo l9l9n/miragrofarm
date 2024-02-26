@@ -23,8 +23,8 @@ from django.conf.urls.static import static
 from apps.products import swagger
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('products/', include('apps.products.urls')),
-    path('blog/', include('apps.blog.urls')),
+    path('api/v1/products/', include('apps.products.urls')),
+    path('api/v1/blog/', include('apps.blog.urls')),
     path('docs/', swagger.schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]
 
