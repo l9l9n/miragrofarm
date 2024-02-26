@@ -9,6 +9,7 @@ from django.core.mail import send_mail
 from config.settings import TELEGRAM_BOT_TOKEN
 from django.conf import settings
 
+
 @receiver(post_save, sender=Order)
 def send_telegram_notification(sender, instance, **kwargs):
     # Проверяем, был ли создан новый заказ

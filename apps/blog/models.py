@@ -5,9 +5,9 @@ from ..products.models import Product
 
 
 class Events(models.Model):
-    title = models.CharField(verbose_name='События', max_length=150)
+    title = models.CharField(verbose_name='Событие', max_length=150)
     description = models.TextField(verbose_name='Описание')
-    created_at = models.DateTimeField(verbose_name='Создано', auto_now_add=True)
+    created_at = models.DateTimeField(verbose_name='Дата создан', auto_now_add=True)
     image = models.CharField(verbose_name='Картинка', max_length=150)
     slug = models.SlugField()
     objects = models.Manager()
