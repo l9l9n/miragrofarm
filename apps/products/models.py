@@ -61,7 +61,7 @@ class Product(models.Model):
     icon_animal = models.ManyToManyField(IconAnimal, verbose_name='Иконка животного', related_name='products')
     description = models.TextField(verbose_name='Описание')
     compound = models.TextField(verbose_name='Состав')
-    applying = models.TextField(verbose_name='Применение')
+    applying = models.TextField(verbose_name='Применение', max_length=50)
     waiting_time = models.TextField(verbose_name='Период ожидания')
     release_form = models.TextField(verbose_name='Форма выпуска')
     storage_date = models.TextField(verbose_name='Условия хранения')

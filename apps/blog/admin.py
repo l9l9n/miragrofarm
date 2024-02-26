@@ -29,15 +29,6 @@ class BlogPublicAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
 
 
-@admin.register(NewProducts)
-class BlogNewProductsAdmin(admin.ModelAdmin):
-    list_display = [
-        'product_name',
-        'slug'
-    ]
-    prepopulated_fields = {'slug': ('product_name',)}
-
-
 @admin.register(ExhibitionCalendar)
 class BlogCalendarAdmin(admin.ModelAdmin):
     list_display = [

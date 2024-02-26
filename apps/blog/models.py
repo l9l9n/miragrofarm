@@ -36,20 +36,6 @@ class Public(models.Model):
         return f"{self.title}"
 
 
-class NewProducts(models.Model):
-    product_name = models.CharField(verbose_name='Имя продукта', max_length=150)
-    slug = models.SlugField()
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True, verbose_name='Новинка')
-    objects = models.Manager()
-
-    class Meta:
-        verbose_name = 'Новинка'
-        verbose_name_plural = 'Новинки'
-
-    def __str__(self):
-        return f"{self.product_name}"
-
-
 class ExhibitionCalendar(models.Model):
     name_exhibition = models.TextField(verbose_name='Календарь выставок')
     period = models.CharField(verbose_name='Период', max_length=100)
@@ -93,3 +79,15 @@ class QuestionsAndAnswers(models.Model):
 
     def __str__(self):
         return f"Имя {self.name}, Номер телефона {self.phone}, email {self.email}"
+
+
+class Service(models.Model):
+    pass
+
+
+class OurPartners(models.Model):
+    pass
+
+
+class Contacts(models.Model):
+    pass

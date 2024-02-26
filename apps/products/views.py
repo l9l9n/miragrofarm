@@ -1,17 +1,20 @@
-from .models import Product, Order, Subscription, IconAnimal
-from rest_framework import generics, viewsets
-from rest_framework import mixins
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.filters import OrderingFilter
+from .filters import ProductFilter
+from .models import Product, Order, Subscription
+from rest_framework import generics
 from .serializers import ProductDetailSerializer, OrderSerializer, ProductListSerializer, SubscriptionSerializer
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import  AllowAny
 
 from .signals import send_subscription_email
-from django.http import HttpResponse
 
 
 class ProductListAPIView(generics.ListAPIView):
     serializer_class = ProductListSerializer
     permission_classes = [AllowAny]
-    # filter_backends = [filters.SearchFilter]
+    filter_backends = (DjangoFilterBackend, OrderingFilter)
+    filterset_class = ProductFilter
+    ordering_fields = ('name',)
     # search_fields = ['name',]
 
     def get_queryset(self):
