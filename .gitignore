@@ -12,6 +12,7 @@ venv
 # If you are using PyCharm #
 # User-specific stuff
 ../.idea
+.idea
 .idea/vcs.xml
 .idea/misc.xml
 # File-based project format
@@ -63,8 +64,11 @@ venv.bak/
 db.sqlite3
 migrations/
 
+.DS_Store
 .idea/inspectionProfiles/
 .idea/miragrofarm.iml
 .idea/modules.xml
 .idea/workspace.xml
+.idea/shelf/Uncommitted_changes_before_Update_at_22_2_24__11_18__Changes_.xml
+.idea/shelf/Uncommitted_changes_before_Update_at_22_2_24__11_18__Changes_1.xml
 

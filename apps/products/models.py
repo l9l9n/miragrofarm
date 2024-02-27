@@ -41,28 +41,35 @@ class IconAnimal(models.Model):
         return f"{self.name}"
 
 
+class FilePDF(models.Model):
+    name = models.CharField(max_length=100, verbose_name='Название PDF файла')
+    pdf_file = models.FileField(upload_to='pdfs/', null=True, blank=True)
+    objects = models.Manager()
+
+    class Meta:
+        verbose_name = 'PDF файл'
+        verbose_name_plural = 'PDF файлы'
+
+    def __str__(self):
+        return f"{self.name}"
+
+
 class Product(models.Model):
-    APPLY_CHOICES = (
-        ('fish', 'рыбы'),
-        ('bird', 'птицы'),
-        ('cattle', 'крупный рогатый скот'),
-        ('small cattle', 'мелкий рогатый скот'),
-        ('pig', 'свиньи'),
-        ('horse', 'лошади'),
-    )
     name = models.CharField(verbose_name='Название продукта', max_length=255)
+    img_product = models.ImageField(upload_to='img_product/', verbose_name='Картинка лекарства')
     short_description = models.CharField(max_length=95, verbose_name='Короткое описание')
     icon_animal = models.ManyToManyField(IconAnimal, verbose_name='Иконка животного', related_name='products')
     description = models.TextField(verbose_name='Описание')
     compound = models.TextField(verbose_name='Состав')
-    applying = models.CharField(verbose_name='Применение', choices=APPLY_CHOICES, max_length=50)
+    applying = models.TextField(verbose_name='Применение', max_length=50)
     waiting_time = models.TextField(verbose_name='Период ожидания')
     release_form = models.TextField(verbose_name='Форма выпуска')
-    storage_date = models.TextField(verbose_name='Состав')
+    storage_date = models.TextField(verbose_name='Условия хранения')
     storage_conditions = models.TextField(verbose_name='Срок хранения')
     sub_category = models.ForeignKey(SubCategory, on_delete=models.SET_NULL, null=True,
                                      verbose_name='Какой подкатегории относится?')
-    is_new_product = models.BooleanField(verbose_name='Является ли продукт новинкой')
+    is_new_product = models.BooleanField(verbose_name='Является ли продукт новинкой', default=False)
+    pdf_file = models.ManyToManyField(FilePDF, verbose_name='PDF файлы', related_name='products')
     objects = models.Manager()
 
     class Meta:

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Events, Public, NewProducts, QuestionsAndAnswers
+from .models import Events, Public, NewProducts, Questions
 
 
 class EventSerializer(serializers.ModelSerializer):
@@ -19,7 +19,8 @@ class NewProductSerializer(serializers.ModelSerializer):
         model = NewProducts
         fields = '__all__'
 
-class QuestionsAndAnswersSerializer(serializers.ModelSerializer):
+
+class QuestionsSerializer(serializers.ModelSerializer):
     class Meta:
-        model = QuestionsAndAnswers
+        model = Questions
         fields = '__all__'
