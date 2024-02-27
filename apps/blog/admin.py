@@ -50,4 +50,6 @@ class QuestionsAdmin(admin.ModelAdmin):
         'questions'
     ]
 
+    def has_add_permission(self, request):
+        return False
 

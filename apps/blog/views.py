@@ -21,3 +21,4 @@ class QuestionsListAPIView(generics.CreateAPIView):
 
     queryset = Questions.objects.all()
     serializer_class = QuestionsSerializer
+
