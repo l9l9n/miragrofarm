@@ -65,10 +65,6 @@ class Questions(models.Model):
     date = models.DateTimeField('Дата вопроса', auto_now_add=True)
     objects = models.Manager()
 
-    @staticmethod
-    def search(query):
-        return Questions.objects.filter(questions__icontains=query)
-
     class Meta:
         verbose_name = 'Вопрос и ответ'
         verbose_name_plural = 'Вопросы и ответы'
