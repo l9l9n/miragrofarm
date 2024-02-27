@@ -8,4 +8,3 @@ class ProductFilter(filters.FilterSet):
     class Meta:
         model = Product
         fields = ['applying']
-
