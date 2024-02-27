@@ -58,4 +58,5 @@ class QuestionsAdmin(admin.ModelAdmin):
         'phone',
         'questions'
     ]
-
+    def has_add_permission(self, request):
+        return False
