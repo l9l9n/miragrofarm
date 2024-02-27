@@ -50,8 +50,8 @@ class BlogCalendarAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name_exhibition',)}
 
 
-@admin.register(QuestionsAndAnswers)
-class QuestionsandanswersAdmin(admin.ModelAdmin):
+@admin.register(Questions)
+class QuestionsAdmin(admin.ModelAdmin):
     list_display = [
         'name',
         'email',
