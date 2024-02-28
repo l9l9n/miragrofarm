@@ -20,6 +20,8 @@ class ProductAdmin(admin.ModelAdmin):
         'id',
     ]
 
+    prepopulated_fields = {'slug_name': ('name',)}
+
     def get_type_animals(self, obj):
         return ", ".join([animal.name for animal in obj.icon_animal.all()])
     get_type_animals.short_description = "Типы животных"
