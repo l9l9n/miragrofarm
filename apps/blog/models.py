@@ -1,7 +1,4 @@
 from django.db import models
-from django.utils import timezone
-
-from ..products.models import Product
 
 
 class Events(models.Model):
@@ -60,17 +57,13 @@ class ManualVideo(models.Model):
     created = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления')
 
 
-class QuestionsAndAnswers(models.Model):
+class Questions(models.Model):
     name = models.CharField(max_length=150, verbose_name='Имя', null=True)
     email = models.EmailField(verbose_name='Почта', null=True)
     phone = models.CharField(max_length=120, verbose_name='Телефон')
     questions = models.TextField(verbose_name='Вопросы и ответы', null=True)
     date = models.DateTimeField('Дата вопроса', auto_now_add=True)
     objects = models.Manager()
-
-    @staticmethod
-    def search(query):
-        return QuestionsAndAnswers.objects.filter(questions__icontains=query)
 
     class Meta:
         verbose_name = 'Вопрос и ответ'
