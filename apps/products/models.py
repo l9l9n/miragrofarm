@@ -15,7 +15,7 @@ class Category(models.Model):
 
 
 class SubCategory(models.Model):
-    name = models.CharField(verbose_name="Подкатегории", max_length=130)
+    name = models.CharField(verbose_name="Подкатегории", max_length=150)
     slug = models.SlugField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
     objects = models.Manager()
@@ -55,14 +55,14 @@ class FilePDF(models.Model):
 
 
 class Product(models.Model):
-    name = models.CharField(verbose_name='Название продукта', max_length=255)
-    slug_name = models.SlugField()
+    name = models.CharField(verbose_name='Название продукта', max_length=150)
+    slug_name = models.SlugField(verbose_name='Слаг')
     img_product = models.ImageField(upload_to='img_product/', verbose_name='Картинка лекарства')
-    short_description = models.CharField(max_length=95, verbose_name='Короткое описание')
+    short_description = models.CharField(max_length=150, verbose_name='Короткое описание')
     icon_animal = models.ManyToManyField(IconAnimal, verbose_name='Иконка животного', related_name='products')
     description = models.TextField(verbose_name='Описание')
     compound = models.TextField(verbose_name='Состав')
-    applying = models.TextField(verbose_name='Применение', max_length=50)
+    applying = models.TextField(verbose_name='Применение')
     waiting_time = models.TextField(verbose_name='Период ожидания')
     release_form = models.TextField(verbose_name='Форма выпуска')
     storage_date = models.TextField(verbose_name='Условия хранения')
@@ -82,7 +82,7 @@ class Product(models.Model):
 
 
 class Order(models.Model):
-    name = models.CharField(verbose_name='Имя', max_length=255, null=False)
+    name = models.CharField(verbose_name='Имя', max_length=150, null=False)
     phone = models.IntegerField(verbose_name='Телефон', null=False)
     email = models.EmailField(verbose_name='email', null=True)
     date = models.DateTimeField('Дата создания заявки', auto_now_add=True)
