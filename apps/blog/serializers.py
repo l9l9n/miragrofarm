@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Events, Public, NewProducts, QuestionsAndAnswers
+from .models import Events, Public, QuestionsAndAnswers
 
 
 class EventSerializer(serializers.ModelSerializer):
