@@ -14,17 +14,25 @@ services:
       - pgdb
     command: sh -c "python3 manage.py makemigrations && python3 manage.py migrate && gunicorn config.wsgi:application --bind 0.0.0.0:8000"
 
-  pgdb:
-    image: postgres
+  postgres:
+    image: pgdb
+    restart: always
     environment:
-      - POSTGRES_DB:user_db
-      - POSTGRES_USER:user
-      - POSTGRES_PASSWORD:user_password
-    container_name: pgdb
+      POSTGRES_DB: miragrofarm_db
+      POSTGRES_USER: l9l9n
+      POSTGRES_PASSWORD: 9900
+      TZ: Asia/Bishkek
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
 
+  migration:
+    build: .
+    command: sh -c "python3 manage.py makemigrations && python3 manage.py migrate"
+    depends_on:
+      - pgdb
 
   nginx:
-    image: nginx
+    image: nginx:latest
     ports:
       - "80:80"
     volumes:
@@ -34,11 +42,6 @@ services:
     depends_on:
       - django
 
-  migration:
-    build: .
-    command: sh -c "python3 manage.py makemigrations && python3 manage.py migrate"
-    depends_on:
-      - pgdb
 
 volumes:
   static_volume:

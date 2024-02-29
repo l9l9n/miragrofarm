@@ -6,7 +6,7 @@ from .models import Order
 import requests
 from django.core.mail import send_mail
 
-from config.settings import TELEGRAM_BOT_TOKEN
+from config.settings.base_set import TELEGRAM_BOT_TOKEN
 from django.conf import settings
 
 
