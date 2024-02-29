@@ -75,10 +75,10 @@ class ManualVideo(models.Model):
 
 
 class Questions(models.Model):
-    name = models.CharField(max_length=150, verbose_name='Имя', null=True)
+    name = models.CharField(max_length=50, verbose_name='Имя', blank=True)
     email = models.EmailField(verbose_name='Почта', null=True)
-    phone = models.CharField(max_length=120, verbose_name='Телефон')
-    questions = models.TextField(verbose_name='Вопросы и ответы', null=True)
+    phone = models.CharField(max_length=15, verbose_name='Телефон', blank=True)
+    questions = models.TextField(verbose_name='Вопросы и ответы', blank=True)
     date = models.DateTimeField('Дата вопроса', auto_now_add=True)
     objects = models.Manager()
 
