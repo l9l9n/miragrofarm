@@ -1,10 +1,6 @@
 from rest_framework import serializers
-<<<<<<< HEAD
-from .models import Events, Public, QuestionsAndAnswers
-=======
 
 from .models import Events, Public, Questions
->>>>>>> main
 
 
 class EventSerializer(serializers.ModelSerializer):

@@ -15,11 +15,7 @@ class ProductListAPIView(generics.ListAPIView):
     filter_backends = (DjangoFilterBackend, OrderingFilter, SearchFilter)
     filterset_class = ProductFilter
     ordering_fields = ('name',)
-<<<<<<< HEAD
-    search_fields = ('name',)
-=======
     search_fields = ['name', 'slug_name']
->>>>>>> main
 
     def get_queryset(self):
         queryset = Product.objects.all()
