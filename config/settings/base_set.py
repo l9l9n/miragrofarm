@@ -30,9 +30,9 @@ DEBUG = True
 
 # Поменять значения при деплое
 if DEBUG:
-    from .development import *
+    from .production import *
 else:
-    from .development import *
+    from .production import *
 
 ALLOWED_HOSTS = ["*"]
 
@@ -81,7 +81,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
