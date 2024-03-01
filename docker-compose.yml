@@ -11,25 +11,26 @@ services:
       - media_volume:/usr/src/app/media
     restart: always
     depends_on:
-      - pgdb
+      - postgres
     command: sh -c "python3 manage.py makemigrations && python3 manage.py migrate && gunicorn config.wsgi:application --bind 0.0.0.0:8000"
 
   postgres:
-    image: pgdb
+    image: postgres
+    container_name: image_pgdb
     restart: always
     environment:
       POSTGRES_DB: miragrofarm_db
       POSTGRES_USER: l9l9n
       POSTGRES_PASSWORD: 9900
       TZ: Asia/Bishkek
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
+#    volumes:
+#      - postgres_data:/var/lib/postgresql/data/
 
   migration:
     build: .
     command: sh -c "python3 manage.py makemigrations && python3 manage.py migrate"
     depends_on:
-      - pgdb
+      - postgres
 
   nginx:
     image: nginx:latest
