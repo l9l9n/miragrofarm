@@ -30,9 +30,9 @@ DEBUG = True
 
 # Поменять значения при деплое
 if DEBUG:
-    from .production import *
+    from .development import *
 else:
-    from .production import *
+    from .development import *
 
 ALLOWED_HOSTS = ["*"]
 
@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
     'corsheaders',
+    'modeltranslation',
 
 ]
 
@@ -97,7 +98,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'config.wsgi.application'
 
 
-
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -119,7 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'ru-Ru'
 
 TIME_ZONE = 'UTC'
 
@@ -127,14 +127,15 @@ USE_I18N = True
 
 USE_TZ = True
 
-# LANGUAGES = (
-#     ('ru', _('Russian')),
-#     ('kg', _('Kirghiz')),
-# )
-#
-# LOCALE_PATHS = [
-#     BASE_DIR / 'locale/',
-# ]
+LANGUAGES = (
+    ('ru', _('Russian')),
+    ('kg', _('Kirghiz')),
+)
+
+LOCALE_PATHS = [
+    BASE_DIR / 'locale/',
+]
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'ru'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
