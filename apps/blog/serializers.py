@@ -19,4 +19,4 @@ class QuestionsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Questions
-        fields = '__all__'
+        fields = ('id', 'name', 'email', 'phone', 'questions', 'date')
