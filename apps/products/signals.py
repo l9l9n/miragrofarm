@@ -1,6 +1,5 @@
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from django.utils import timezone
 from .models import Order
 
 import requests
@@ -23,7 +22,7 @@ def send_telegram_notification(sender, instance, **kwargs):
         # Добавьте другие необходимые поля
 
         # Отправляем сообщение в Telegram
-        chat_id = "-4084669223"  # Замените на ваш реальный chat_id
+        chat_id = "-1001982487239"  # Замените на ваш реальный chat_id
         bot_token = TELEGRAM_BOT_TOKEN  # Замените на ваш реальный токен
         url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
         payload = {"chat_id": chat_id, "text": message_text}

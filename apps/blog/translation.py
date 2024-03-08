@@ -34,13 +34,3 @@ class ManualVideoTranslation(TranslationOptions):
         'name',
         'description',
     )
-
-
-@register(Questions)
-class QuestionsTranslation(TranslationOptions):
-    fields = (
-        'name',
-        'email',
-        'phone',
-        'questions',
-    )
