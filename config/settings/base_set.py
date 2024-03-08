@@ -30,9 +30,9 @@ DEBUG = True
 
 # Поменять значения при деплое
 if DEBUG:
-    from .development import *
+    from .production import *
 else:
-    from .development import *
+    from .production import *
 
 ALLOWED_HOSTS = ["*"]
 
