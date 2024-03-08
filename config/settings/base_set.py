@@ -162,7 +162,10 @@ EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=True, cast=bool)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
-CSRF_TRUSTED_ORIGINS = ['http://3.85.118.216']
+CSRF_TRUSTED_ORIGINS = [
+    'http://3.85.118.216',
+    'http://107.23.142.232'
+                        ]
 
 CORS_ALLOW_ALL_ORIGINS = True
 
