@@ -86,6 +86,9 @@ class OrderAdmin(admin.ModelAdmin):
         'email',
     ]
 
+    def has_add_permission(self, request):
+        return False
+
 
 @admin.register(IconAnimal)
 class IconAnimalAdmin(admin.ModelAdmin):
@@ -96,6 +99,9 @@ class IconAnimalAdmin(admin.ModelAdmin):
 @admin.register(Subscription)
 class SubscribeAdmin(admin.ModelAdmin):
     list_display = ['email']
+
+    def has_add_permission(self, request):
+        return False
 
 
 @admin.register(FilePDF)

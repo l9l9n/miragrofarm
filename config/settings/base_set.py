@@ -30,9 +30,9 @@ DEBUG = True
 
 # Поменять значения при деплое
 if DEBUG:
-    from .development import *
+    from .production import *
 else:
-    from .development import *
+    from .production import *
 
 ALLOWED_HOSTS = ["*"]
 
@@ -119,13 +119,16 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'ru-Ru'
+LANGUAGE_CODE = 'ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Bishkek'
 
 USE_I18N = True
 
 USE_TZ = True
+
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'ru'
+MODELTRANSLATION_LANGUAGES = ('ru', 'kg')
 
 LANGUAGES = (
     ('ru', _('Russian')),
@@ -135,12 +138,10 @@ LANGUAGES = (
 LOCALE_PATHS = [
     BASE_DIR / 'locale/',
 ]
-MODELTRANSLATION_DEFAULT_LANGUAGE = 'ru'
-MODELTRANSLATION_LANGUAGES = ('ru', 'kg')
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
@@ -162,7 +163,10 @@ EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=True, cast=bool)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
-CSRF_TRUSTED_ORIGINS = ['http://3.85.118.216']
+CSRF_TRUSTED_ORIGINS = [
+    'http://3.85.118.216',
+    'http://107.23.142.232'
+                        ]
 
 CORS_ALLOW_ALL_ORIGINS = True
 
