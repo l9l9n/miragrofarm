@@ -77,7 +77,7 @@ class QuestionsAdmin(admin.ModelAdmin):
 @admin.register(ManualVideo)
 class ManualVideoAdmin(admin.ModelAdmin):
     list_display = ['name', 'description']
-    fieldsets = [
-        ('Русский основной', {'fields': ['name', 'description']}),
-        ('Кыргызский перевод', {'fields': ['name_kg', 'description_kg']})
-    ]
+    # fieldsets = [
+    #     ('Русский основной', {'fields': ['name', 'description']}),
+    #     ('Кыргызский перевод', {'fields': ['name_kg', 'description_kg']})
+    # ]

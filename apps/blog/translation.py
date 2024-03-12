@@ -38,9 +38,9 @@ class QuestionsTranslation(TranslationOptions):
     )
 
 
-@register(ManualVideo)
-class ManualVideoTranslation(TranslationOptions):
-    fields = (
-        'name',
-        'description',
-    )
+# @register(ManualVideo)
+# class ManualVideoTranslation(TranslationOptions):
+#     fields = (
+#         'name',
+#         'description',
+#     )
