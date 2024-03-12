@@ -34,7 +34,7 @@ class Public(models.Model):
 
 
 class ExhibitionCalendar(models.Model):
-    name_exhibition = models.TextField(verbose_name='Календарь выставок')
+    name_exhibition = models.TextField(max_length=150, verbose_name='Календарь выставок')
     period = models.CharField(verbose_name='Период', max_length=100)
     data_of_participation = models.CharField(verbose_name='Дата участия', max_length=100)
     location = models.CharField(verbose_name='Место проведения выставки', max_length=100)
@@ -53,8 +53,9 @@ class ManualVideo(models.Model):
     name = models.CharField(max_length=150, verbose_name='Название видео')
     description = models.TextField(verbose_name='Описание видео')
     img_preview = models.ImageField(upload_to='img_preview_video/')
-    link = models.CharField(max_length=200)
+    link = models.CharField(max_length=300)
     created = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления')
+    objects = models.Manager()
 
     class Meta:
         verbose_name = 'Видео инструкция'
@@ -62,9 +63,9 @@ class ManualVideo(models.Model):
 
 
 class Questions(models.Model):
-    name = models.CharField(max_length=150, verbose_name='Имя', null=True)
+    name = models.CharField(max_length=90, verbose_name='Имя', null=True)
     email = models.EmailField(verbose_name='Почта', null=True)
-    phone = models.CharField(max_length=120, verbose_name='Телефон')
+    phone = models.CharField(max_length=13, verbose_name='Телефон')
     questions = models.TextField(verbose_name='Вопросы и ответы', null=True)
     date = models.DateTimeField('Дата вопроса', auto_now_add=True)
     objects = models.Manager()
