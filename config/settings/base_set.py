@@ -30,9 +30,9 @@ DEBUG = True
 
 # Поменять значения при деплое
 if DEBUG:
-    from .production import *
+    from .development import *
 else:
-    from .production import *
+    from .development import *
 
 ALLOWED_HOSTS = ["*"]
 
@@ -129,6 +129,8 @@ USE_TZ = True
 
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'ru'
 MODELTRANSLATION_LANGUAGES = ('ru', 'kg')
+MODELTRANSLATION_TRANSLATION_REGISTRY = 'core.translation'
+
 
 LANGUAGES = (
     ('ru', _('Russian')),
@@ -165,7 +167,8 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 CSRF_TRUSTED_ORIGINS = [
     'http://3.85.118.216',
-    'http://107.23.142.232'
+    'http://107.23.142.232',
+
                         ]
 
 CORS_ALLOW_ALL_ORIGINS = True
@@ -197,3 +200,5 @@ CORS_ALLOW_ALL_ORIGINS = True
 #     'POST',
 #     'PUT',
 # ]
+
+# MODELTRANSLATION_CHECK_UNIQUE = True
