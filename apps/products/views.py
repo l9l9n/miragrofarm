@@ -10,7 +10,6 @@ from rest_framework import generics, status
 from .serializers import ProductDetailSerializer, OrderSerializer, ProductListSerializer, SubscriptionSerializer
 from rest_framework.permissions import AllowAny
 
-# from .signals import send_subscription_email
 from config.settings.base_set import TELEGRAM_BOT_TOKEN, EMAIL_HOST_USER
 
 

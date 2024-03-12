@@ -22,6 +22,38 @@ class ProductAdmin(admin.ModelAdmin):
 
     prepopulated_fields = {'slug_name': ('name',)}
 
+    fieldsets = [
+        ('Русский основной', {'fields': [
+                                        'name',
+                                        'short_description',
+                                        'get_type_animals',
+                                        'get_truncated_compound',
+                                        'get_truncated_description',
+                                        'get_truncated_applying',
+                                        'get_truncated_waiting_time',
+                                        'get_truncated_release_form',
+                                        'get_truncated_storage_date',
+                                        'get_truncated_storage_conditions',
+                                        'sub_category',
+                                        'get_pdf_file',
+                                        'slug_name',
+                                         ]}),
+        ('Кыргызский перевод', {'fields': [
+                                        'name',
+                                        'short_description_kg',
+                                        'get_type_animals_kg',
+                                        'get_truncated_compound_kg',
+                                        'get_truncated_description_kg',
+                                        'get_truncated_applying_kg',
+                                        'get_truncated_waiting_time_kg',
+                                        'get_truncated_release_form_kg',
+                                        'get_truncated_storage_date_kg',
+                                        'get_truncated_storage_conditions_kg',
+                                        'sub_category_kg',
+                                        'get_pdf_file_kg',
+                                         ]}),
+    ]
+
     def get_type_animals(self, obj):
         return ", ".join([animal.name for animal in obj.icon_animal.all()])
     get_type_animals.short_description = "Типы животных"
@@ -68,6 +100,11 @@ class SubCategoryAdmin(admin.ModelAdmin):
     ]
     prepopulated_fields = {'slug': ('name',)}
 
+    fieldsets = [
+        ('Русский основной', {'fields': ['name', 'category', 'slug',]}),
+        ('Кыргызский перевод', {'fields': ['name_kg', 'category_kg',]})
+    ]
+
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -77,6 +114,11 @@ class CategoryAdmin(admin.ModelAdmin):
     ]
     prepopulated_fields = {'slug': ('name',)}
 
+    fieldsets = [
+        ('Русский основной', {'fields': ['name', 'slug',]}),
+        ('Кыргызский перевод', {'fields': ['name_kg',]})
+    ]
+
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
@@ -84,6 +126,11 @@ class OrderAdmin(admin.ModelAdmin):
         'name',
         'phone',
         'email',
+    ]
+
+    fieldsets = [
+        ('Русский основной', {'fields': ['name', 'phone', 'email',]}),
+        ('Кыргызский перевод', {'fields': ['name_kg', 'phone_kg', 'email_kg']})
     ]
 
     def has_add_permission(self, request):
@@ -99,6 +146,11 @@ class IconAnimalAdmin(admin.ModelAdmin):
 @admin.register(Subscription)
 class SubscribeAdmin(admin.ModelAdmin):
     list_display = ['email']
+
+    fieldsets = [
+        ('Русский основной', {'fields': ['email',]}),
+        ('Кыргызский перевод', {'fields': ['email_kg']})
+    ]
 
     def has_add_permission(self, request):
         return False

@@ -65,6 +65,19 @@ class QuestionsAdmin(admin.ModelAdmin):
         'questions'
     ]
 
+    fieldsets = [
+        ('Русский основной', {'fields': ['name', 'email', 'phone', 'questions']}),
+        ('Кыргызский перевод', {'fields': ['name_kg', 'email_kg', 'phone_kg', 'questions_kg']})
+    ]
+
     def has_add_permission(self, request):
         return False
 
+
+@admin.register(ManualVideo)
+class ManualVideoAdmin(admin.ModelAdmin):
+    list_display = ['name', 'description']
+    fieldsets = [
+        ('Русский основной', {'fields': ['name', 'description']}),
+        ('Кыргызский перевод', {'fields': ['name_kg', 'description_kg']})
+    ]

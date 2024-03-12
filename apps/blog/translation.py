@@ -28,6 +28,16 @@ class ExhibitionCalendarTranslation(TranslationOptions):
     )
 
 
+@register(Questions)
+class QuestionsTranslation(TranslationOptions):
+    fields = (
+        'name',
+        'email',
+        'phone',
+        'questions',
+    )
+
+
 @register(ManualVideo)
 class ManualVideoTranslation(TranslationOptions):
     fields = (

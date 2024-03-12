@@ -30,15 +30,15 @@ class ProductTranslation(TranslationOptions):
     )
 
 
-# @register(Order)
-# class OrderTranslation(TranslationOptions):
-#     fields = (
-#         'name',
-#         'phone',
-#         'email',
-#     )
-#
-#
-# @register(Subscription)
-# class SubscriptionTranslation(TranslationOptions):
-#     fields = ('email',)
+@register(Order)
+class OrderTranslation(TranslationOptions):
+    fields = (
+        'name',
+        'phone',
+        'email',
+    )
+
+
+@register(Subscription)
+class SubscriptionTranslation(TranslationOptions):
+    fields = ('email',)
