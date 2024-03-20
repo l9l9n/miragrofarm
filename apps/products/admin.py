@@ -25,6 +25,12 @@ class ProductAdmin(admin.ModelAdmin):
     fieldsets = [
         ('Русский основной', {'fields': [
             'name',
+            'slug_name',
+            "img_product",
+            "icon_animal",
+            'sub_category',
+            'is_new_product',
+            'pdf_file',
             'short_description',
             'compound',
             'description',
@@ -33,8 +39,7 @@ class ProductAdmin(admin.ModelAdmin):
             'release_form',
             'storage_date',
             'storage_conditions',
-            'sub_category',
-            'slug_name',
+
         ]}),
         ('Кыргызский перевод', {'fields': [
             'short_description_kg',
@@ -45,7 +50,7 @@ class ProductAdmin(admin.ModelAdmin):
             'release_form_kg',
             'storage_date_kg',
             'storage_conditions_kg',
-            'sub_category_kg',
+            # 'sub_category_kg',
         ]}),
     ]
 
