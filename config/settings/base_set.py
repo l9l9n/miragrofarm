@@ -35,6 +35,7 @@ else:
     from .development import *
 
 ALLOWED_HOSTS = ["*"]
+INTERNAL_IPS = ["127.0.0.1",]
 
 # Application definition
 
@@ -56,6 +57,7 @@ INSTALLED_APPS = [
     'django_filters',
     'corsheaders',
     'modeltranslation',
+    'debug_toolbar',
 
 ]
 
@@ -75,6 +77,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware",  # new
 ]
 
 ROOT_URLCONF = 'config.urls'

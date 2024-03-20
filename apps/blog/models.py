@@ -56,6 +56,13 @@ class ManualVideo(models.Model):
     link = models.CharField(max_length=200)
     created = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления')
 
+    class Meta:
+        verbose_name = 'Видео мануал'
+        verbose_name_plural = 'Видео мануалы'
+
+    def __str__(self):
+        return self.name
+
 
 class Questions(models.Model):
     name = models.CharField(max_length=150, verbose_name='Имя', null=True)
