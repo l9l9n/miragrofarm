@@ -6,4 +6,5 @@ urlpatterns = [
     path("event-list/", BlogEventsListAPIView.as_view()),
     path("publish/", PublicBlogListAPIView.as_view()),
     path("questionsa/", QuestionsListAPIView.as_view()),
+    path("service/", ServiceListAPIView.as_view()),
 ]

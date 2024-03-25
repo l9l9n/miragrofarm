@@ -93,3 +93,16 @@ class Questions(models.Model):
 
     def __str__(self):
         return f"Имя {self.name}, Номер телефона {self.phone}, email {self.email}"
+
+
+class Service(models.Model):
+    name = models.CharField(max_length=150, verbose_name='Имя', null=True)
+    description = models.CharField(max_length=150, verbose_name='Описание')
+    image = models.CharField(verbose_name='Картинка', max_length=200)
+
+    class Meta:
+        verbose_name = 'Услуга'
+            verbose_name_plural = 'Услуги'
+
+    def __str__(self):
+        return f"{self.name}"

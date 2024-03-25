@@ -60,3 +60,13 @@ class QuestionsAdmin(admin.ModelAdmin):
     ]
     def has_add_permission(self, request):
         return False
+
+@admin.register(Service)
+class BlogServiceAdmin(admin.ModelAdmin):
+    list_display = [
+        'name',
+        'description',
+        'image',
+        'slug'
+    ]
+    prepopulated_fields = {'slug': ('name',)}
