@@ -51,7 +51,7 @@ class QuestionsListAPIView(generics.CreateAPIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class ServiceListAPIView(generics.CreateAPIView):
+class ServiceListAPIView(generics.ListAPIView):
     queryset = Service.objects.all()
     serializer_class = ServiceSerializer
 
