@@ -22,6 +22,38 @@ class ProductAdmin(admin.ModelAdmin):
 
     prepopulated_fields = {'slug_name': ('name',)}
 
+    fieldsets = [
+        ('Русский основной', {'fields': [
+            'name',
+            'slug_name',
+            "img_product",
+            "icon_animal",
+            'sub_category',
+            'is_new_product',
+            'pdf_file',
+            'short_description',
+            'compound',
+            'description',
+            'applying',
+            'waiting_time',
+            'release_form',
+            'storage_date',
+            'storage_conditions',
+
+        ]}),
+        ('Кыргызский перевод', {'fields': [
+            'short_description_kg',
+            'compound_kg',
+            'description_kg',
+            'applying_kg',
+            'waiting_time_kg',
+            'release_form_kg',
+            'storage_date_kg',
+            'storage_conditions_kg',
+            # 'sub_category_kg',
+        ]}),
+    ]
+
     def get_type_animals(self, obj):
         return ", ".join([animal.name for animal in obj.icon_animal.all()])
     get_type_animals.short_description = "Типы животных"
@@ -68,6 +100,11 @@ class SubCategoryAdmin(admin.ModelAdmin):
     ]
     prepopulated_fields = {'slug': ('name',)}
 
+    fieldsets = [
+        ('Русский основной', {'fields': ['name', 'category', 'slug',]}),
+        ('Кыргызский перевод', {'fields': ['name_kg', 'category_kg',]})
+    ]
+
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -77,6 +114,11 @@ class CategoryAdmin(admin.ModelAdmin):
     ]
     prepopulated_fields = {'slug': ('name',)}
 
+    fieldsets = [
+        ('Русский основной', {'fields': ['name', 'slug',]}),
+        ('Кыргызский перевод', {'fields': ['name_kg',]})
+    ]
+
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
@@ -85,6 +127,14 @@ class OrderAdmin(admin.ModelAdmin):
         'phone',
         'email',
     ]
+
+    fieldsets = [
+        ('Русский основной', {'fields': ['name', 'phone', 'email',]}),
+        ('Кыргызский перевод', {'fields': ['name_kg', 'phone_kg', 'email_kg']})
+    ]
+
+    def has_add_permission(self, request):
+        return False
 
 
 @admin.register(IconAnimal)
@@ -96,6 +146,14 @@ class IconAnimalAdmin(admin.ModelAdmin):
 @admin.register(Subscription)
 class SubscribeAdmin(admin.ModelAdmin):
     list_display = ['email']
+
+    fieldsets = [
+        ('Русский основной', {'fields': ['email',]}),
+        ('Кыргызский перевод', {'fields': ['email_kg']})
+    ]
+
+    def has_add_permission(self, request):
+        return False
 
 
 @admin.register(FilePDF)

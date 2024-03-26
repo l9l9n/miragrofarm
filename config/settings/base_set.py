@@ -17,7 +17,7 @@ from decouple import config
 from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -27,6 +27,12 @@ SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+# Поменять значения при деплое
+if DEBUG:
+    from .development import *
+else:
+    from .development import *
 
 ALLOWED_HOSTS = ["*"]
 
@@ -49,6 +55,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
     'corsheaders',
+    'modeltranslation',
 
 ]
 
@@ -75,7 +82,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -90,15 +97,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -121,26 +119,31 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Bishkek'
 
 USE_I18N = True
 
 USE_TZ = True
 
-# LANGUAGES = (
-#     ('ru', _('Russian')),
-#     ('kg', _('Kirghiz')),
-# )
-#
-# LOCALE_PATHS = [
-#     BASE_DIR / 'locale/',
-# ]
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'ru'
+MODELTRANSLATION_LANGUAGES = ('ru', 'kg')
+MODELTRANSLATION_TRANSLATION_REGISTRY = 'core.translation'
+# MODELTRANSLATION_CHECK_UNIQUE = True
+
+LANGUAGES = (
+    ('ru', _('Russian')),
+    ('kg', _('Kyrgyz')),
+)
+
+LOCALE_PATHS = [
+    BASE_DIR / 'locale/',
+]
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
@@ -162,7 +165,11 @@ EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=True, cast=bool)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
-CSRF_TRUSTED_ORIGINS = ['http://3.85.118.216']
+CSRF_TRUSTED_ORIGINS = [
+    'http://3.85.118.216',
+    'http://107.23.142.232',
+
+                        ]
 
 CORS_ALLOW_ALL_ORIGINS = True
 

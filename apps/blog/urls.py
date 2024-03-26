@@ -1,9 +1,10 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import BlogEventsListAPIView, PublicBlogListAPIView, QuestionsListAPIView
+from .views import BlogEventsListAPIView, PublicBlogListAPIView, QuestionsListAPIView, ServiceListAPIView
 
 urlpatterns = [
     path("event-list/", BlogEventsListAPIView.as_view()),
     path("publish/", PublicBlogListAPIView.as_view()),
-    path("questions/", QuestionsListAPIView.as_view()),
+    path("questionsa/", QuestionsListAPIView.as_view()),
+    path("service/", ServiceListAPIView.as_view()),
 ]

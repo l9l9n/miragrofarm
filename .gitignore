@@ -5,6 +5,7 @@ __pycache__
 __pycache__/
 MAF/db.sqlite3
 media
+media/
 migrations/
 # Backup files #
 *.bak

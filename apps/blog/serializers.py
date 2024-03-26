@@ -1,6 +1,5 @@
 from rest_framework import serializers
-
-from .models import Events, Public, Questions
+from .models import Events, Public, Questions, Service
 
 
 class EventSerializer(serializers.ModelSerializer):
@@ -20,3 +19,11 @@ class QuestionsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Questions
         fields = '__all__'
+
+
+class ServiceSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Service
+        fields = ('id', 'name', 'email', 'phone', 'questions', 'date')
+
