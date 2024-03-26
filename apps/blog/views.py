@@ -1,5 +1,4 @@
 import requests
-from django.shortcuts import render
 from rest_framework import generics, status
 from rest_framework.response import Response
 
@@ -9,13 +8,11 @@ from .serializers import EventSerializer, PublicSerializer, QuestionsSerializer,
 
 
 class BlogEventsListAPIView(generics.ListAPIView):
-
     queryset = Events.objects.all()
     serializer_class = EventSerializer
 
 
 class PublicBlogListAPIView(generics.ListAPIView):
-
     queryset = Public.objects.all()
     serializer_class = PublicSerializer
 
@@ -45,13 +42,14 @@ class QuestionsListAPIView(generics.CreateAPIView):
                 if response.status_code == 200:
                     return Response(serializer.data, status=status.HTTP_201_CREATED)
                 else:
-                    return Response({"error": "Failed to send message to Telegram"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+                    return Response({"error": "Failed to send message to Telegram"},
+                                    status=status.HTTP_500_INTERNAL_SERVER_ERROR)
             except Exception as e:
-                return Response({"error": f"Error sending message to Telegram: {e}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+                return Response({"error": f"Error sending message to Telegram: {e}"},
+                                status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class ServiceListAPIView(generics.CreateAPIView):
-
     queryset = Service.objects.all()
     serializer_class = ServiceSerializer

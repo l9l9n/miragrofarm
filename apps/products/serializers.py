@@ -21,7 +21,7 @@ class ProductListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Product
-        fields = ('id', 'name', 'short_description', 'icon_animal',)
+        fields = ('id', 'name', 'slug_name', 'img_product', 'short_description', 'icon_animal',)
 
 
 class ProductDetailSerializer(serializers.ModelSerializer):
@@ -32,6 +32,7 @@ class ProductDetailSerializer(serializers.ModelSerializer):
         model = Product
         fields = (
             'name',
+            'slug_name',
             'img_product',
             'short_description',
             'icon_animal',
@@ -56,6 +57,7 @@ class OrderSerializer(serializers.ModelSerializer):
 
 
 class SubscriptionSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Subscription
         fields = ['email']

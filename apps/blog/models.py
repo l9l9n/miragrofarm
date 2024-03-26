@@ -1,13 +1,10 @@
 from django.db import models
-from django.utils import timezone
-
-from ..products.models import Product
 
 
 class Events(models.Model):
-    title = models.CharField(verbose_name='События', max_length=150)
+    title = models.CharField(verbose_name='Событие', max_length=150)
     description = models.TextField(verbose_name='Описание')
-    created_at = models.DateTimeField(verbose_name='Создано', auto_now_add=True)
+    created_at = models.DateTimeField(verbose_name='Дата создан', auto_now_add=True)
     image = models.CharField(verbose_name='Картинка', max_length=150)
     slug = models.SlugField()
     objects = models.Manager()
@@ -36,22 +33,8 @@ class Public(models.Model):
         return f"{self.title}"
 
 
-class NewProducts(models.Model):
-    product_name = models.CharField(verbose_name='Имя продукта', max_length=150)
-    slug = models.SlugField()
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True, verbose_name='Новинка')
-    objects = models.Manager()
-
-    class Meta:
-        verbose_name = 'Новинка'
-        verbose_name_plural = 'Новинки'
-
-    def __str__(self):
-        return f"{self.product_name}"
-
-
 class ExhibitionCalendar(models.Model):
-    name_exhibition = models.TextField(verbose_name='Календарь выставок')
+    name_exhibition = models.TextField(max_length=150, verbose_name='Календарь выставок')
     period = models.CharField(verbose_name='Период', max_length=100)
     data_of_participation = models.CharField(verbose_name='Дата участия', max_length=100)
     location = models.CharField(verbose_name='Место проведения выставки', max_length=100)
@@ -70,21 +53,22 @@ class ManualVideo(models.Model):
     name = models.CharField(max_length=150, verbose_name='Название видео')
     description = models.TextField(verbose_name='Описание видео')
     img_preview = models.ImageField(upload_to='img_preview_video/')
-    link = models.CharField(max_length=200)
+    link = models.CharField(max_length=300)
     created = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления')
+    objects = models.Manager()
+
+    class Meta:
+        verbose_name = 'Видео инструкция'
+        verbose_name_plural = 'Видео инструкции'
 
 
 class Questions(models.Model):
-    name = models.CharField(max_length=50, verbose_name='Имя', blank=True)
+    name = models.CharField(max_length=90, verbose_name='Имя', null=True)
     email = models.EmailField(verbose_name='Почта', null=True)
-    phone = models.CharField(max_length=15, verbose_name='Телефон', blank=True)
-    questions = models.TextField(verbose_name='Вопросы и ответы', blank=True)
+    phone = models.CharField(max_length=13, verbose_name='Телефон')
+    questions = models.TextField(verbose_name='Вопросы и ответы', null=True)
     date = models.DateTimeField('Дата вопроса', auto_now_add=True)
     objects = models.Manager()
-
-    @staticmethod
-    def search(query):
-        return Questions.objects.filter(questions__icontains=query)
 
     class Meta:
         verbose_name = 'Вопрос и ответ'
@@ -99,10 +83,19 @@ class Service(models.Model):
     name = models.CharField(max_length=150, verbose_name='Имя', null=True)
     description = models.CharField(max_length=150, verbose_name='Описание')
     image = models.CharField(verbose_name='Картинка', max_length=200)
+    objects = models.Manager()
 
     class Meta:
         verbose_name = 'Услуга'
-            verbose_name_plural = 'Услуги'
+        verbose_name_plural = 'Услуги'
 
     def __str__(self):
         return f"{self.name}"
+
+
+class OurPartners(models.Model):
+    pass
+
+
+class Contacts(models.Model):
+    pass

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import BlogEventsListAPIView, PublicBlogListAPIView, QuestionsListAPIView
+from .views import BlogEventsListAPIView, PublicBlogListAPIView, QuestionsListAPIView, ServiceListAPIView
 
 urlpatterns = [
     path("event-list/", BlogEventsListAPIView.as_view()),
