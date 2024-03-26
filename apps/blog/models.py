@@ -4,9 +4,8 @@ from django.db import models
 class Events(models.Model):
     title = models.CharField(verbose_name='Событие', max_length=150)
     description = models.TextField(verbose_name='Описание')
-    created_at = models.DateTimeField(verbose_name='Дата создан', auto_now_add=True)
-    image = models.CharField(verbose_name='Картинка', max_length=150)
-    slug = models.SlugField()
+    created_at = models.DateTimeField(verbose_name='Дата события', auto_now_add=True)
+    image = models.ImageField(verbose_name='Картинка', upload_to='img_blog/')
     objects = models.Manager()
 
     class Meta:
@@ -20,9 +19,8 @@ class Events(models.Model):
 class Public(models.Model):
     title = models.CharField(verbose_name='Публикации', max_length=150)
     description = models.TextField(verbose_name='Описание')
-    created_at = models.DateTimeField(verbose_name='Создано', auto_now_add=True)
-    image = models.CharField(verbose_name='Картинка', max_length=200)
-    slug = models.SlugField()
+    created_at = models.DateTimeField(verbose_name='Опубликовано', auto_now_add=True)
+    image = models.ImageField(verbose_name='Картинка', upload_to='img_public/')
     objects = models.Manager()
 
     class Meta:
@@ -34,11 +32,10 @@ class Public(models.Model):
 
 
 class ExhibitionCalendar(models.Model):
-    name_exhibition = models.TextField(max_length=150, verbose_name='Календарь выставок')
-    period = models.CharField(verbose_name='Период', max_length=100)
+    name_exhibition = models.TextField(max_length=320, verbose_name='Название выставки')
+    period = models.CharField(verbose_name='Период', max_length=30)
     data_of_participation = models.CharField(verbose_name='Дата участия', max_length=100)
     location = models.CharField(verbose_name='Место проведения выставки', max_length=100)
-    slug = models.SlugField()
     objects = models.Manager()
 
     class Meta:
@@ -52,8 +49,8 @@ class ExhibitionCalendar(models.Model):
 class ManualVideo(models.Model):
     name = models.CharField(max_length=150, verbose_name='Название видео')
     description = models.TextField(verbose_name='Описание видео')
-    img_preview = models.ImageField(upload_to='img_preview_video/')
-    link = models.CharField(max_length=300)
+    img_preview = models.ImageField(verbose_name="Превью видео", upload_to='img_preview_video/')
+    link = models.CharField(verbose_name='Ссылка на видео', max_length=300)
     created = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления')
     objects = models.Manager()
 
@@ -81,8 +78,8 @@ class Questions(models.Model):
 
 class Service(models.Model):
     name = models.CharField(max_length=150, verbose_name='Имя', null=True)
-    description = models.CharField(max_length=150, verbose_name='Описание')
-    image = models.CharField(verbose_name='Картинка', max_length=200)
+    description = models.TextField(max_length=400, verbose_name='Описание')
+    image = models.ImageField(verbose_name='Картинка', upload_to="img_service/")
     objects = models.Manager()
 
     class Meta:
@@ -94,8 +91,25 @@ class Service(models.Model):
 
 
 class OurPartners(models.Model):
-    pass
+    img_partner = models.ImageField(verbose_name="Партнеры (лого)", upload_to="img_partner/")
+    objects = models.Manager()
+
+    class Meta:
+        verbose_name = 'Логотип партнера'
+        verbose_name_plural = 'Логотип партнеров'
 
 
 class Contacts(models.Model):
-    pass
+    owner = models.CharField(verbose_name="Владелец", max_length=180)
+    company = models.CharField(verbose_name="Наименование компании или ОСО", max_length=180)
+    phone = models.CharField(verbose_name='Телефон', max_length=13)
+    email = models.EmailField(verbose_name="Почта", max_length=90)
+    address = models.CharField(verbose_name="Адрес", max_length=100)
+    objects = models.Manager()
+
+    class Meta:
+        verbose_name = 'Контакт'
+        verbose_name_plural = 'Контакты'
+
+    def __str__(self):
+        return self.owner

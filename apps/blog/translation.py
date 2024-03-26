@@ -1,5 +1,5 @@
 from modeltranslation.translator import register, TranslationOptions
-from .models import Events, Public, ExhibitionCalendar, ManualVideo, Questions
+from .models import Events, Public, ExhibitionCalendar, Questions, Service, ManualVideo
 
 
 @register(Events)
@@ -28,6 +28,14 @@ class ExhibitionCalendarTranslation(TranslationOptions):
     )
 
 
+@register(ManualVideo)
+class ManualVideoTranslation(TranslationOptions):
+    fields = (
+        'name',
+        'description',
+    )
+
+
 @register(Questions)
 class QuestionsTranslation(TranslationOptions):
     fields = (
@@ -38,9 +46,9 @@ class QuestionsTranslation(TranslationOptions):
     )
 
 
-# @register(ManualVideo)
-# class ManualVideoTranslation(TranslationOptions):
-#     fields = (
-#         'name',
-#         'description',
-#     )
+@register(Service)
+class ServiceTranslation(TranslationOptions):
+    fields = (
+        'name',
+        'description',
+    )
