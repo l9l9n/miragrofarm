@@ -42,14 +42,14 @@ class ContactsSerializer(serializers.ModelSerializer):
         fields = ('id', 'owner', 'company', 'phone', 'email', 'address',)
 
 
-class ManualVideoSerializer(serializers.Serializer):
+class ManualVideoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ManualVideo
         fields = ('id', 'name', 'description', 'img_preview', 'link', 'created',)
 
 
-class ExhibitionCalendarSerializer(serializers.Serializer):
+class ExhibitionCalendarSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ExhibitionCalendar
