@@ -28,7 +28,7 @@ class BlogPublicAdmin(admin.ModelAdmin):
 
     fieldsets = [
         ('Русский основной', {'fields': ['title', 'description', 'image',]}),
-        ('Кыргызский перевод', {'fields': ['title_kg', 'description_kg']})
+        ('Кыргызский перевод', {'fields': ['title_kg', 'description_kg',]})
     ]
 
 

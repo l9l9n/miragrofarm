@@ -5,13 +5,13 @@ from .models import Events, Public, Questions, Service, OurPartners, Contacts, M
 class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Events
-        fields = '__all__'
+        fields = ('title', 'description', 'created_at', 'image',)
 
 
 class PublicSerializer(serializers.ModelSerializer):
     class Meta:
         model = Public
-        fields = '__all__'
+        fields = ('id', 'title', 'description', 'created_at', 'image',)
 
 
 class QuestionsSerializer(serializers.ModelSerializer):

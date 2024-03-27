@@ -4,7 +4,7 @@ from django.db import models
 class Events(models.Model):
     title = models.CharField(verbose_name='Событие', max_length=150)
     description = models.TextField(verbose_name='Описание')
-    created_at = models.DateTimeField(verbose_name='Дата события', auto_now_add=True)
+    created_at = models.DateField(verbose_name='Дата события', auto_now_add=True)
     image = models.ImageField(verbose_name='Картинка', upload_to='img_blog/')
     objects = models.Manager()
 
@@ -19,7 +19,7 @@ class Events(models.Model):
 class Public(models.Model):
     title = models.CharField(verbose_name='Публикации', max_length=150)
     description = models.TextField(verbose_name='Описание')
-    created_at = models.DateTimeField(verbose_name='Опубликовано', auto_now_add=True)
+    created_at = models.DateField(verbose_name='Опубликовано', auto_now_add=True)
     image = models.ImageField(verbose_name='Картинка', upload_to='img_public/')
     objects = models.Manager()
 
@@ -51,7 +51,7 @@ class ManualVideo(models.Model):
     description = models.TextField(verbose_name='Описание видео')
     img_preview = models.ImageField(verbose_name="Превью видео", upload_to='img_preview_video/')
     link = models.CharField(verbose_name='Ссылка на видео', max_length=300)
-    created = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления')
+    created = models.DateField(auto_now_add=True, verbose_name='Дата добавления')
     objects = models.Manager()
 
     class Meta:
