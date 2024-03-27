@@ -3,9 +3,9 @@ from rest_framework import generics, status
 from rest_framework.response import Response
 
 from config.settings.base_set import TELEGRAM_BOT_TOKEN
-from .models import Events, Public, Questions, Service, OurPartners, Contacts, ManualVideo
+from .models import Events, Public, Questions, Service, OurPartners, Contacts, ManualVideo, ExhibitionCalendar
 from .serializers import EventSerializer, PublicSerializer, QuestionsSerializer, ServiceSerializer, \
-    OurPartnerSerializer, ContactsSerializer, ManualVideoSerializer
+    OurPartnerSerializer, ContactsSerializer, ManualVideoSerializer, ExhibitionCalendarSerializer
 
 
 class BlogEventsListAPIView(generics.ListAPIView):
@@ -57,16 +57,21 @@ class ServiceListAPIView(generics.ListAPIView):
 
 
 class OurPartnersListAPIView(generics.ListAPIView):
-    queryset = OurPartners
+    queryset = OurPartners.objects.all()
     serializer_class = OurPartnerSerializer
 
 
 class ContactsListAPIView(generics.ListAPIView):
-    queryset = Contacts
+    queryset = Contacts.objects.all()
     serializer_class = ContactsSerializer
 
 
 class ManualVideoListAPIView(generics.ListAPIView):
-    queryset = ManualVideo
+    queryset = ManualVideo.objects.all()
     serializer_class = ManualVideoSerializer
+
+
+class ExhibitionCalendarListAPIView(generics.ListAPIView):
+    queryset = ExhibitionCalendar.objects.all()
+    serializer_class = ExhibitionCalendarSerializer
 

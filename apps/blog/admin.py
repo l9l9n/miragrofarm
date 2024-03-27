@@ -33,7 +33,7 @@ class BlogPublicAdmin(admin.ModelAdmin):
 
 
 @admin.register(ExhibitionCalendar)
-class BlogCalendarAdmin(admin.ModelAdmin):
+class ExhibitionCalendarAdmin(admin.ModelAdmin):
     list_display = [
         'name_exhibition',
         'period',
@@ -43,7 +43,7 @@ class BlogCalendarAdmin(admin.ModelAdmin):
 
     fieldsets = [
         ('Русский основной', {'fields': ['name_exhibition', 'period', 'data_of_participation', 'location',]}),
-        ('Кыргызский перевод', {'fields': ['name_exhibition_kg', 'period_kg', 'data_of_participation_kg', 'location_kg',]})
+        ('Кыргызский перевод', {'fields': ['name_exhibition_kg', 'location_kg',]})
     ]
 
 

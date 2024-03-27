@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Events, Public, Questions, Service, OurPartners, Contacts, ManualVideo
+from .models import Events, Public, Questions, Service, OurPartners, Contacts, ManualVideo, ExhibitionCalendar
 
 
 class EventSerializer(serializers.ModelSerializer):
@@ -47,3 +47,10 @@ class ManualVideoSerializer(serializers.Serializer):
     class Meta:
         model = ManualVideo
         fields = ('id', 'name', 'description', 'img_preview', 'link', 'created',)
+
+
+class ExhibitionCalendarSerializer(serializers.Serializer):
+
+    class Meta:
+        model = ExhibitionCalendar
+        fields = ('id', 'name_exhibition', 'period', 'data_of_participation', 'location',)

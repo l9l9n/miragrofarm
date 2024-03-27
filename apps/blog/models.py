@@ -58,10 +58,6 @@ class ManualVideo(models.Model):
         verbose_name = 'Видео инструкция'
         verbose_name_plural = 'Видео инструкции'
 
-    class Meta:
-        verbose_name = 'Видео мануал'
-        verbose_name_plural = 'Видео мануалы'
-
     def __str__(self):
         return self.name
 
