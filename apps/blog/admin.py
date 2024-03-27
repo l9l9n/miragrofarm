@@ -1,7 +1,4 @@
 from django.contrib import admin
-
-# Register your models here.
-from django.contrib import admin
 from .models import *
 
 
@@ -12,12 +9,10 @@ class BlogEventsAdmin(admin.ModelAdmin):
         'description',
         'created_at',
         'image',
-        'slug'
     ]
-    prepopulated_fields = {'slug': ('title',)}
 
     fieldsets = [
-        ('Русский основной', {'fields': ['title', 'description', 'slug',]}),
+        ('Русский основной', {'fields': ['title', 'description', 'image',]}),
         ('Кыргызский перевод', {'fields': ['title_kg', 'description_kg']})
     ]
 
@@ -29,12 +24,10 @@ class BlogPublicAdmin(admin.ModelAdmin):
         'description',
         'created_at',
         'image',
-        'slug'
     ]
-    prepopulated_fields = {'slug': ('title',)}
 
     fieldsets = [
-        ('Русский основной', {'fields': ['title', 'description', 'slug',]}),
+        ('Русский основной', {'fields': ['title', 'description', 'image',]}),
         ('Кыргызский перевод', {'fields': ['title_kg', 'description_kg']})
     ]
 
@@ -46,12 +39,10 @@ class BlogCalendarAdmin(admin.ModelAdmin):
         'period',
         'data_of_participation',
         'location',
-        'slug'
     ]
-    prepopulated_fields = {'slug': ('name_exhibition',)}
 
     fieldsets = [
-        ('Русский основной', {'fields': ['name_exhibition', 'period', 'data_of_participation', 'location', 'slug',]}),
+        ('Русский основной', {'fields': ['name_exhibition', 'period', 'data_of_participation', 'location',]}),
         ('Кыргызский перевод', {'fields': ['name_exhibition_kg', 'period_kg', 'data_of_participation_kg', 'location_kg',]})
     ]
 
@@ -62,7 +53,7 @@ class QuestionsAdmin(admin.ModelAdmin):
         'name',
         'email',
         'phone',
-        'questions'
+        'questions',
     ]
 
     fieldsets = [
@@ -74,10 +65,46 @@ class QuestionsAdmin(admin.ModelAdmin):
         return False
 
 
+@admin.register(Service)
+class BlogServiceAdmin(admin.ModelAdmin):
+    list_display = [
+        'name',
+        'description',
+        'image',
+    ]
+
+    fieldsets = [
+        ('Русский основной', {'fields': ['name', 'description', 'image',]}),
+        ('Кыргызский перевод', {'fields': ['name_kg', 'description_kg']})
+    ]
+
+
 @admin.register(ManualVideo)
 class ManualVideoAdmin(admin.ModelAdmin):
-    list_display = ['name', 'description']
-    # fieldsets = [
-    #     ('Русский основной', {'fields': ['name', 'description']}),
-    #     ('Кыргызский перевод', {'fields': ['name_kg', 'description_kg']})
-    # ]
+    list_display = [
+        'name',
+        'description',
+        'img_preview',
+        'link',
+    ]
+
+    fieldsets = [
+        ('Русский основной', {'fields': ['name', 'description', 'img_preview', 'link']}),
+        ('Кыргызский перевод', {'fields': ['name_kg', 'description_kg']})
+    ]
+
+
+@admin.register(OurPartners)
+class OurPartnersAdmin(admin.ModelAdmin):
+    list_display = ['img_partner',]
+
+
+@admin.register(Contacts)
+class ContactsAdmin(admin.ModelAdmin):
+    list_display = [
+        'owner',
+        'company',
+        'phone',
+        'email',
+        'address',
+    ]

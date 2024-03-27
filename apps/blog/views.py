@@ -1,21 +1,19 @@
 import requests
-from django.shortcuts import render
 from rest_framework import generics, status
 from rest_framework.response import Response
 
 from config.settings.base_set import TELEGRAM_BOT_TOKEN
-from .models import Events, Public, Questions
-from .serializers import EventSerializer, PublicSerializer, QuestionsSerializer
+from .models import Events, Public, Questions, Service, OurPartners, Contacts, ManualVideo
+from .serializers import EventSerializer, PublicSerializer, QuestionsSerializer, ServiceSerializer, \
+    OurPartnerSerializer, ContactsSerializer, ManualVideoSerializer
 
 
 class BlogEventsListAPIView(generics.ListAPIView):
-
     queryset = Events.objects.all()
     serializer_class = EventSerializer
 
 
 class PublicBlogListAPIView(generics.ListAPIView):
-
     queryset = Public.objects.all()
     serializer_class = PublicSerializer
 
@@ -45,7 +43,30 @@ class QuestionsListAPIView(generics.CreateAPIView):
                 if response.status_code == 200:
                     return Response(serializer.data, status=status.HTTP_201_CREATED)
                 else:
-                    return Response({"error": "Failed to send message to Telegram"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+                    return Response({"error": "Failed to send message to Telegram"},
+                                    status=status.HTTP_500_INTERNAL_SERVER_ERROR)
             except Exception as e:
-                return Response({"error": f"Error sending message to Telegram: {e}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+                return Response({"error": f"Error sending message to Telegram: {e}"},
+                                status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class ServiceListAPIView(generics.ListAPIView):
+    queryset = Service.objects.all()
+    serializer_class = ServiceSerializer
+
+
+class OurPartnersListAPIView(generics.ListAPIView):
+    queryset = OurPartners
+    serializer_class = OurPartnerSerializer
+
+
+class ContactsListAPIView(generics.ListAPIView):
+    queryset = Contacts
+    serializer_class = ContactsSerializer
+
+
+class ManualVideoListAPIView(generics.ListAPIView):
+    queryset = ManualVideo
+    serializer_class = ManualVideoSerializer
+

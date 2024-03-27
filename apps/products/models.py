@@ -67,7 +67,7 @@ class Product(models.Model):
     waiting_time = models.TextField(verbose_name='Период ожидания')
     release_form = models.TextField(verbose_name='Форма выпуска')
     storage_date = models.TextField(verbose_name='Условия хранения')
-    storage_conditions = models.TextField(verbose_name='Срок хранения')
+    storage_conditions = models.TextField(verbose_name='Срок годности')
     sub_category = models.ForeignKey(SubCategory, on_delete=models.SET_NULL, null=True,
                                      verbose_name='Какой подкатегории относится?')
     is_new_product = models.BooleanField(verbose_name='Является ли продукт новинкой', default=False)
