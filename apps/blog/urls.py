@@ -1,7 +1,8 @@
-from django.contrib import admin
-from django.urls import path, include
-from .views import BlogEventsListAPIView, PublicBlogListAPIView, QuestionsListAPIView, ServiceListAPIView, \
-    OurPartnersListAPIView, ContactsListAPIView, ManualVideoListAPIView, ExhibitionCalendarListAPIView
+from django.urls import path
+from .views import (BlogEventsListAPIView, PublicBlogListAPIView, QuestionsListAPIView, \
+                    ServiceListAPIView, OurPartnersListAPIView, ContactsListAPIView, \
+                    ManualVideoListAPIView, ExhibitionCalendarListAPIView
+                    )
 
 urlpatterns = [
     path("event-list/", BlogEventsListAPIView.as_view()),
