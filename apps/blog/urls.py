@@ -1,12 +1,15 @@
 from django.urls import path
 from .views import (BlogEventsListAPIView, PublicBlogListAPIView, QuestionsListAPIView, \
                     ServiceListAPIView, OurPartnersListAPIView, ContactsListAPIView, \
-                    ManualVideoListAPIView, ExhibitionCalendarListAPIView
+                    ManualVideoListAPIView, ExhibitionCalendarListAPIView, BlogEventsRetrieveAPIView,
+                    PublicBlogRetrieveAPIView
                     )
 
 urlpatterns = [
     path("event-list/", BlogEventsListAPIView.as_view()),
+    # path("event-list/<int:pk>/", BlogEventsRetrieveAPIView.as_view()),
     path("publish/", PublicBlogListAPIView.as_view()),
+    # path("publish/<int:pk>/", PublicBlogRetrieveAPIView.as_view()),
     path("ex-cal/", ExhibitionCalendarListAPIView.as_view()),
     path("questions/", QuestionsListAPIView.as_view()),
     path("service/", ServiceListAPIView.as_view()),

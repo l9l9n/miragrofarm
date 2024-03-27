@@ -6,6 +6,7 @@ class Events(models.Model):
     description = models.TextField(verbose_name='Описание')
     created_at = models.DateField(verbose_name='Дата события', auto_now_add=True)
     image = models.ImageField(verbose_name='Картинка', upload_to='img_blog/')
+    is_publish = models.BooleanField(verbose_name="Опубликованно")
     objects = models.Manager()
 
     class Meta:
@@ -21,6 +22,7 @@ class Public(models.Model):
     description = models.TextField(verbose_name='Описание')
     created_at = models.DateField(verbose_name='Опубликовано', auto_now_add=True)
     image = models.ImageField(verbose_name='Картинка', upload_to='img_public/')
+    is_publish = models.BooleanField(verbose_name="Опубликованно")
     objects = models.Manager()
 
     class Meta:

@@ -9,13 +9,27 @@ from .serializers import EventSerializer, PublicSerializer, QuestionsSerializer,
 
 
 class BlogEventsListAPIView(generics.ListAPIView):
+    """ Список опубликованных событий """
     queryset = Events.objects.all()
     serializer_class = EventSerializer
 
 
+class BlogEventsRetrieveAPIView(generics.RetrieveAPIView):
+    queryset = Events.objects.all()
+    serializer_class = EventSerializer
+    lookup_field = 'pk'
+
+
 class PublicBlogListAPIView(generics.ListAPIView):
+    """ Список опубликованных блогов """
     queryset = Public.objects.all()
     serializer_class = PublicSerializer
+
+
+class PublicBlogRetrieveAPIView(generics.RetrieveAPIView):
+    queryset = Public.objects.all()
+    serializer_class = PublicSerializer
+    lookup_field = 'pk'
 
 
 class QuestionsListAPIView(generics.CreateAPIView):
