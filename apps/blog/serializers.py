@@ -2,13 +2,26 @@ from rest_framework import serializers
 from .models import Events, Public, Questions, Service, OurPartners, Contacts, ManualVideo, ExhibitionCalendar
 
 
-class EventSerializer(serializers.ModelSerializer):
+class EventListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Events
-        fields = ('title', 'description', 'created_at', 'image',)
+        fields = ('id', 'title', 'short_description', 'created_at', 'image',)
 
 
-class PublicSerializer(serializers.ModelSerializer):
+class EventDetailSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Events
+        fields = ('id', 'title', 'description', 'created_at', 'image',)
+
+
+class PublicListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Public
+        fields = ('id', 'title', 'short_description', 'created_at', 'image',)
+
+
+class PublicDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Public
         fields = ('id', 'title', 'description', 'created_at', 'image',)

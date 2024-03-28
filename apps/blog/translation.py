@@ -6,6 +6,7 @@ from .models import Events, Public, ExhibitionCalendar, Questions, Service, Manu
 class EventsTranslation(TranslationOptions):
     fields = (
         'title',
+        'short_description',
         'description',
     )
 
@@ -14,6 +15,7 @@ class EventsTranslation(TranslationOptions):
 class PublicTranslation(TranslationOptions):
     fields = (
         'title',
+        'short_description',
         'description',
     )
 

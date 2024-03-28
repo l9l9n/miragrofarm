@@ -6,14 +6,16 @@ from .models import *
 class BlogEventsAdmin(admin.ModelAdmin):
     list_display = [
         'title',
+        'short_description',
         'description',
         'created_at',
         'image',
+        'is_publish',
     ]
 
     fieldsets = [
-        ('Русский основной', {'fields': ['title', 'description', 'image',]}),
-        ('Кыргызский перевод', {'fields': ['title_kg', 'description_kg']})
+        ('Русский основной', {'fields': ['title', 'short_description', 'description', 'image', 'is_publish',]}),
+        ('Кыргызский перевод', {'fields': ['title_kg', 'short_description_kg', 'description_kg']})
     ]
 
 
@@ -21,14 +23,16 @@ class BlogEventsAdmin(admin.ModelAdmin):
 class BlogPublicAdmin(admin.ModelAdmin):
     list_display = [
         'title',
+        'short_description',
         'description',
         'created_at',
         'image',
+        'is_publish',
     ]
 
     fieldsets = [
-        ('Русский основной', {'fields': ['title', 'description', 'image',]}),
-        ('Кыргызский перевод', {'fields': ['title_kg', 'description_kg',]})
+        ('Русский основной', {'fields': ['title', 'short_description', 'description', 'image', 'is_publish',]}),
+        ('Кыргызский перевод', {'fields': ['title_kg', 'short_description_kg', 'description_kg',]})
     ]
 
 

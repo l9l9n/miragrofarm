@@ -3,10 +3,11 @@ from django.db import models
 
 class Events(models.Model):
     title = models.CharField(verbose_name='Событие', max_length=150)
+    short_description = models.TextField(verbose_name='Короткое описание', max_length=250)
     description = models.TextField(verbose_name='Описание')
     created_at = models.DateField(verbose_name='Дата события', auto_now_add=True)
     image = models.ImageField(verbose_name='Картинка', upload_to='img_blog/')
-    is_publish = models.BooleanField(verbose_name="Опубликованно")
+    is_publish = models.BooleanField(verbose_name="Опубликовано")
     objects = models.Manager()
 
     class Meta:
@@ -19,10 +20,11 @@ class Events(models.Model):
 
 class Public(models.Model):
     title = models.CharField(verbose_name='Публикации', max_length=150)
+    short_description = models.TextField(verbose_name='Короткое описание', max_length=250)
     description = models.TextField(verbose_name='Описание')
-    created_at = models.DateField(verbose_name='Опубликовано', auto_now_add=True)
+    created_at = models.DateField(verbose_name='Добавлено', auto_now_add=True)
     image = models.ImageField(verbose_name='Картинка', upload_to='img_public/')
-    is_publish = models.BooleanField(verbose_name="Опубликованно")
+    is_publish = models.BooleanField(verbose_name="Опубликовано")
     objects = models.Manager()
 
     class Meta:

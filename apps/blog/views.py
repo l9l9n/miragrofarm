@@ -4,31 +4,32 @@ from rest_framework.response import Response
 
 from config.settings.base_set import TELEGRAM_BOT_TOKEN
 from .models import Events, Public, Questions, Service, OurPartners, Contacts, ManualVideo, ExhibitionCalendar
-from .serializers import EventSerializer, PublicSerializer, QuestionsSerializer, ServiceSerializer, \
-    OurPartnerSerializer, ContactsSerializer, ManualVideoSerializer, ExhibitionCalendarSerializer
+from .serializers import EventListSerializer, PublicListSerializer, QuestionsSerializer, ServiceSerializer, \
+    OurPartnerSerializer, ContactsSerializer, ManualVideoSerializer, ExhibitionCalendarSerializer, \
+    EventDetailSerializer, PublicDetailSerializer
 
 
-class BlogEventsListAPIView(generics.ListAPIView):
+class EventsListAPIView(generics.ListAPIView):
     """ Список опубликованных событий """
-    queryset = Events.objects.all()
-    serializer_class = EventSerializer
+    queryset = Events.objects.filter(is_publish=True)
+    serializer_class = EventListSerializer
 
 
-class BlogEventsRetrieveAPIView(generics.RetrieveAPIView):
+class EventDetailRetrieveAPIView(generics.RetrieveAPIView):
     queryset = Events.objects.all()
-    serializer_class = EventSerializer
+    serializer_class = EventDetailSerializer
     lookup_field = 'pk'
 
 
-class PublicBlogListAPIView(generics.ListAPIView):
+class PublicListAPIView(generics.ListAPIView):
     """ Список опубликованных блогов """
-    queryset = Public.objects.all()
-    serializer_class = PublicSerializer
+    queryset = Public.objects.filter(is_publish=True)
+    serializer_class = PublicListSerializer
 
 
-class PublicBlogRetrieveAPIView(generics.RetrieveAPIView):
+class PublicDetailRetrieveAPIView(generics.RetrieveAPIView):
     queryset = Public.objects.all()
-    serializer_class = PublicSerializer
+    serializer_class = PublicDetailSerializer
     lookup_field = 'pk'
 
 
