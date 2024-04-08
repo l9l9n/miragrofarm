@@ -103,7 +103,7 @@ class OurPartnersAdmin(admin.ModelAdmin):
     list_display = ['img_partner',]
 
 
-@admin.register(Contacts)
+@admin.register(OwnerContacts)
 class ContactsAdmin(admin.ModelAdmin):
     list_display = [
         'owner',

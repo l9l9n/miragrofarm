@@ -50,15 +50,15 @@ INSTALLED_APPS = [
     # My apps created
     'apps.products',
     'apps.blog',
-    'drf_yasg',
+    'apps.chat_contacts',
 
     # Installed app
     'rest_framework',
+    'drf_yasg',
     'django_filters',
     'corsheaders',
     'modeltranslation',
     'debug_toolbar',
-
 ]
 
 REST_FRAMEWORK = {
