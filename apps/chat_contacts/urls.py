@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import *
+from .views import ChatContactListAPIView
 
 urlpatterns = [
-    # path("event/", EventsListAPIView.as_view()),
+    path("chat/", ChatContactListAPIView.as_view()),
 ]

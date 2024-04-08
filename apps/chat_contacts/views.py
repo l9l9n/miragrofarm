@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from rest_framework import generics
+from .models import ChatContacts
+from .serializers import ChatContactsSerializer
 
-# Create your views here.
+
+class ChatContactListAPIView(generics.ListAPIView):
+    queryset = ChatContacts.objects.all()
+    serializer_class = ChatContactsSerializer

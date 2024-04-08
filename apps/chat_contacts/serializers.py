@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from models import ChatContacts
+from .models import ChatContacts
 
 
-class ChatContactsSerializer(serializers.Serializer):
+class ChatContactsSerializer(serializers.ModelSerializer):
     class Meta:
         model = ChatContacts
-        fields = 'chat_link'
+        fields = ('id', 'chat_link',)
