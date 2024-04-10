@@ -106,7 +106,7 @@ class OurPartners(models.Model):
         verbose_name_plural = 'Логотип партнеров'
 
 
-class Contacts(models.Model):
+class OwnerContacts(models.Model):
     owner = models.CharField(verbose_name="Владелец", max_length=180)
     company = models.CharField(verbose_name="Наименование компании или ОСО", max_length=180)
     phone = models.CharField(verbose_name='Телефон', max_length=13)
