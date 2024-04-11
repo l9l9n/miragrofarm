@@ -27,7 +27,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/products/', include('apps.products.urls')),
     path('api/v1/blog/', include('apps.blog.urls')),
-    path('api/v1/chat_contacts/', include('apps.chat_contacts.urls')),
+    path('api/v1/chat/', include('apps.chat_contacts.urls')),
     # path('i18n/', include('django.conf.urls.i18n')),
     path('docs/', swagger.schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]
