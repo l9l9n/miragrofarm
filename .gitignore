@@ -63,7 +63,6 @@ venv.bak/
 
 # db
 db.sqlite3
-migrations/
 
 .DS_Store
 .idea/inspectionProfiles/
