@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     # My apps created
     'apps.products',
     'apps.blog',
-    'drf_yasg',
+
 
     # Installed app
     'rest_framework',
@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'modeltranslation',
     'debug_toolbar',
+    'drf_yasg',
 
 ]
 
