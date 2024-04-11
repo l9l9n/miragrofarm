@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Events, Public, Questions, Service, OurPartners, Contacts, ManualVideo, ExhibitionCalendar
+from .models import Events, Public, Questions, Service, OurPartners, OwnerContacts, ManualVideo, ExhibitionCalendar
 
 
 class EventListSerializer(serializers.ModelSerializer):
@@ -51,7 +51,7 @@ class OurPartnerSerializer(serializers.ModelSerializer):
 class ContactsSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Contacts
+        model = OwnerContacts
         fields = ('id', 'owner', 'company', 'phone', 'email', 'address',)
 
 
