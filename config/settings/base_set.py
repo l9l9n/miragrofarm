@@ -172,7 +172,9 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 CSRF_TRUSTED_ORIGINS = [
     'http://3.85.118.216',
     'http://107.23.142.232',
-
+    'http://91.213.233.198:82',
+    'http://91.213.233.198',
+    'https://server.miragrofarm.kg'
                         ]
 
 CORS_ALLOW_ALL_ORIGINS = True
